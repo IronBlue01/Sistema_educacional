@@ -1,0 +1,119 @@
+
+ <!--=====================================Breadcrumb=================================================-->
+ <div class="m-0 col-md-12">
+ <nav  aria-label="breadcrumb">
+   <ol class="breadcrumb">
+     <li class="breadcrumb-item"><a href="/">Home</a></li>
+     <li class="breadcrumb-item active" aria-current="page"><a href="/turma?curso=<?= $_GET['curso'] ?>">Turmas</a></li>
+		 <li class="breadcrumb-item active" aria-current="page">Modulos cadastrados</li>
+   </ol>
+ </nav>
+ </div>
+ <!--=====================================Breadcrumb==========================================-->
+
+
+ <script>
+	 function valida(formulario){
+		 if(formulario.modulo.value==""){
+			 return false;
+		 }else{
+			 return true;
+		 }
+	 }
+ </script>
+
+
+<div class="row col-12 bg-white p-3 m-0">
+<div class="row col-md-12 justify-content-end">
+		<button type="button" data-toggle="modal" data-target="#InsertModal" class="btn bg-success text-white p-3"> <i class="fa fa-plus"></i> Novo módulo</button>
+</div>
+
+	<table class="table mt-3">
+				<tr class="text-center bg-primary text-white">
+					<td  >Nº</td>
+					<td >Nome</td>
+					<td>Nº de aulas</td>
+					<td>Remover</td>
+					<td>Editar</td>
+				</tr>
+				<?php
+						$num = 1;
+						foreach ($this->view->infoModulo as $modulo):
+				?>
+				<tr class="text-center">
+					<td><?= $modulo['id_modulo'] ?></td>
+					<td ><?= $modulo['nome_modulo'] ?></td>
+					<td><?= $modulo['qtd_aulas'] ?></td>
+					<td><i style="cursor:pointer;" data-toggle="modal" data-target="#excluirModal<?= $num ?>" class="fa fa-trash"></i></td>
+					<td> <i class="fa fa-pen"></i> </td>
+				</tr>
+
+				<!--MODAL DE SOLICITÇÃO DE EXCLUSÃO=======================================================================-->
+				<div class="modal fade" id="excluirModal<?= $num ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header bg-danger text-white">
+								<h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir este modulo?</h5>
+								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">Selecione a opção excluir caso queira realmente excluir o modulo.</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" type="button" data-dismiss="modal" >Cancelar</button>
+								<a class="btn btn-danger" href="/deletarModulo?id_curso=<?= $_GET['curso'] ?>&&id_modulo=<?= $modulo['id_modulo'] ?>"><i class="fa fa-trash"></i> Excluir</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--MODAL DE SOLICITÇÃO DE EXCLUSÃO=======================================================================-->
+
+				<?php $num++; endforeach; ?>
+	</table>
+</div>
+
+<div class="modal fade" id="InsertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-success text-white">
+				<h5 class="modal-title" id="exampleModalLabel"> Inserir um novo módulo</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+
+
+			<div class="row col-12 p-3 m-0 ">
+				<form class="col-12" action="/insereModulo" method="post" enctype="multipart/form-data" onsubmit="return valida(this)">
+					<label class="mb-0"><strong>Imagem de capa do módulo</strong></label>
+					<input class="form-control" type="file" name="img">
+
+					<label class="mb-0 mt-3"><strong>Nome do módulo</strong></label>
+					<input class="form-control" type="text" name="modulo">
+
+					<label class="mb-0 mt-3"><strong>Descrição curta do módulo</strong></label>
+					<input class="form-control" type="text" name="descricao">
+
+					<label for="leciona"class="mt-3 mb-0"><strong>Este módulo é de alguma subcategoria específica?</strong> </label>
+					<select class="form-control" name="subcategoria">
+							<option value="---">Não há subcategoria para este curso</option>
+							<option value="T">Desenvolvimento tecnológico</option>
+							<option value="D">Desenvolvimento pessoal</option>
+							<option value="A">Administrativo</option>
+					</select>
+
+					<label class="mb-0 mt-3"><strong>Nº de aulas</strong></label>
+					<input  class="form-control" min="1" type="number" name="aulas" value="1">
+
+					<input type="hidden" name="curso" value="<?= $_GET['curso'] ?>">
+			</div>
+
+
+			<div class="modal-footer bg-primary">
+				<button class="btn btn-danger" type="button" data-dismiss="modal" >Cancelar</button>
+				<button class="btn btn-success" type="submit"><a>Inserir</a></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<style media="screen">
+  .number{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-radius: 50%;
+    padding: 10px;
+    padding-top: 32px;
+    padding-left: 11px;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+<h6><a href="/modulo_atividades?id_turma=<?= $_GET['id_turma'] ?>&&id_curso=<?= $_GET['id_curso'] ?>&&subcategoria=<?= $_GET['subcategoria'] ?>">voltar</a></h6>
+<div class="container-fluid">
+  <div class="row bg-white p-4">
+    <h3>Lista todas as atividades cadastradas e liberadas para este módulo</h3>
+
+<?php $x=1; foreach ($this->view->atividades as $atividade): ?>
+
+<!--=================================loop do card======================================================-->
+    	<div onclick="window.location='/P_trab_ent?id_turma=<?= $_GET['id_turma'] ?>&&id_modulo=<?= $_GET['id_modulo'] ?>&&id_atividade=<?= $atividade['id_atividade'] ?>&&id_curso=<?= $_GET['id_curso'] ?>&&subcategoria=<?= $_GET['subcategoria'] ?>'" style="cursor:pointer;"  class="card shadow mb-4 col-md-5 mt-5 ml-2">
+    							<div class="bg-primary justify-content-center d-flex number">
+    								<p style="font-size:15pt;" class="p-0 m-0 text-white">Aula - <?= $x; ?></p>
+    							</div>
+    			<div class="card-header py-3">
+    				<h6 style="margin-left:70px;" class=" font-weight-bold text-primary "><?= $atividade['titulo'] ?></h6>
+    			</div>
+    			<div class="card-body">
+    						<div class="text-center">
+    						<div class="text-center">
+    					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:25rem; " src="assets/dashboard/atividades/capa/<?= $atividade['img_cap'] ?>">
+    				</div>
+    				<p><?= $atividade['description'] ?></p>
+    			</div>
+    		</div>
+    </div>
+<!--=================================End loop do card======================================================-->
+
+<?php $x++; endforeach; ?>
+
+  </div>
+</div>

@@ -1,0 +1,81 @@
+
+<h6><a class="text-info" href="/dash_aluno">Home /</a> Trabalhos entregues</h6>
+<div class="row col-md-12 bg-white m-0 p-3">
+	<h6><strong>Trabalhos de Word</strong></h6>
+
+	<table class="table table-hover ">
+				<tr  class="text-center bg-primary text-white">
+					<td style="vertical-align:middle;">Nº</td>
+					<td style="vertical-align:middle;">Nome</td>
+					<td style="vertical-align:middle;">Data</td>
+					<td style="vertical-align:middle;">Status</td>
+					<td style="vertical-align:middle;">Nota</td>
+					<td style="vertical-align:middle;">Observação</td>
+					<td style="vertical-align:middle;">Baixe seu trabalho</td>
+					<!--<td style="vertical-align:middle;">Editar</td>-->
+					<td style="vertical-align:middle;">Excluir</td>
+				</tr>
+
+				<?php
+				$i=1;
+				foreach ($this->view->entregues as  $trabalho):
+
+				if(!$trabalho['nota']==""){
+
+					if($trabalho['nota']>=6){
+							$corLinha = "bg-success text-white";
+					}else{
+						$corLinha = "bg-warning text-white";
+					}
+
+
+					$icon = "white";
+				}else{
+					$corLinha = "";
+					$icon = "success";
+				}
+				?>
+				<tr class="text-center <?= $corLinha ?>">
+					<td style="vertical-align:middle;"><?= $i ?></td>
+					<td style="vertical-align:middle;"><?= $trabalho['nomeAtividade'] ?></td>
+					<td style="vertical-align:middle;"><?= $trabalho['data'] ?></td>
+					<td style="vertical-align:middle;">
+						<?php if($trabalho['nota']==""){ ?>
+						Aguardando correção
+					<?php }else{ ?>
+						Corrigido
+						<?php } ?>
+					</td>
+
+					<td style="vertical-align:middle;">
+						<?php if($trabalho['nota']==""){ ?>
+						  Aguardando
+					<?php }else{ ?>
+						<?= $trabalho['nota'] ?>
+						<?php } ?>
+					</td>
+					<td class="text-left">
+						<?php if(!$trabalho['obs']==""){ ?>
+						 <?= $trabalho['obs'] ?>
+					 <?php }else{ ?>
+						 ---
+					 <?php } ?>
+					 </td>
+
+					<td style="vertical-align:middle;"> <a href="assets/dashboard/arquivo_alunos/<?=  $trabalho['nomeArquivo'] ?>"> <i class="fas fa-download text-<?= $icon ?>"></i> </a></td>
+
+					<!--<td style="vertical-align:middle;"><li style="cursor:pointer;" class="fas fa-pen"></li></td>-->
+							<td style="vertical-align:middle;"><a href="/removeTrabAlun?id_trab=<?= $trabalho['id_entrega'] ?>"><li style="cursor:pointer;" class="fas fa-trash"></li></a></td>
+				</tr>
+			<?php $i++; endforeach; ?>
+	</table>
+
+	<div class="row col-12 m-0 mt-3">
+			<button type="button" class="btn btn-success" name="button"></button>&nbsp;  Nota dentro da média
+	</div>
+
+	<div class="row col-12 m-0 mt-3">
+	<button type="button" class="btn btn-warning" name="button"></button>&nbsp;Nota abaixo a média
+	</div>
+
+</div>

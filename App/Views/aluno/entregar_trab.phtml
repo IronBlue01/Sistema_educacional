@@ -1,0 +1,49 @@
+<style media="screen">
+
+	.cursor{
+		cursor: pointer;
+	}
+
+</style>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Módulo dos trabalho entregues</h1>
+		<!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+	</div>
+
+
+
+	<div class="row">
+
+
+	<?php if ($this->view->modulos!=NULL): ?>
+	<?php $i=1; foreach ($this->view->modulos as $modulo): ?>
+
+	<div onclick="window.location='ver_entrega?modulo=<?= $modulo['id_modulo'] ?>&&sub=<?= $_GET['sub'] ?>'"  class="card mr-3 cursor mb-3" style="width: 18rem;">
+	  <img class="card-img-top" src="assets/dashboard/modulos/<?= $modulo['img'] ?>" alt="Card image cap">
+	  <div class="card-body  ">
+	    <h5 class="card-title">Trabalhos de <?= $modulo['nome_modulo']  ?></h5>
+	    <!--<p class="card-text">Media: 50</p>-->
+	  </div>
+	</div>
+<?php endforeach; ?>
+<?php else: ?>
+
+	<div class="col-12 p-0 m-0 justify-content-center d-flex mt-5">
+		<h3>Não há nehum módulo cadastrado</h3>
+	</div>
+
+<?php endif; ?>
+
+
+
+
+
+
+</div>
+
+
+</div>

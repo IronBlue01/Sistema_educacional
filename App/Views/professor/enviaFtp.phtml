@@ -1,0 +1,19 @@
+
+<?php
+
+  echo "Upload_max_filesize: " . ini_get("upload_max_filesize");
+  echo '<br>';
+  echo "max_file_upload: " . ini_get("max_file_uploads");
+  echo '<br>';
+  echo "post_max_size: " . ini_get("post_max_size");
+  echo '<br><br><br>';
+
+?>
+<div class="container-fluid">
+  <h6>Envia arquivos via protocolo FTP</h6>
+  <br><br>
+  <form action="/cad_ftp" method="post" enctype="multipart/form-data">
+    <input type="file" name="arquivo"><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+</div>

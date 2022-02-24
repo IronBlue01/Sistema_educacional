@@ -1,0 +1,41 @@
+<h6 class="text-white"><a class="text-info" href="/dash_professor">HOME/ </a>Turmas cadastradas na <strong>  <?= ucfirst($_GET['D']) ?></strong></h6>
+<hr>
+<style media="screen">
+	.pointer{
+		cursor: pointer;
+	}
+</style>
+<div  class="row col-md-12 m-0 p-2">
+<?php if ($this->view->turmas!=NULL): ?>
+
+	<?php foreach ($this->view->turmas as $turma): ?>
+
+	<!--Bloco de repetição-->
+	<div onclick="window.location='/P_turma?id_turma=<?= $turma['id_turma'] ?>'" class="col-xl-3 col-md-6 mb-4 pointer">
+		<div class="card border-left-primary shadow h-100 py-2  col-md-11">
+			<div class="card-body p-2">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $turma['nomeTurma'] ?></div>
+						<p class="m-0"><?= $turma['horario_ini'] ?>:00 - <?= $turma['horario_ter'] ?>:00</p>
+					</div>
+					<div class="col-auto">
+						<i class="fas fa-users fa-2x text-gray-300"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Bloco de repetição-->
+
+<?php endforeach; ?>
+
+<?php else: ?>
+
+	<div class="col-md-12 container-fluid p-0 m-0 justify-content-center d-flex">
+			<h3>Não há turmas cadastradas para <strong> <?= $_GET['D'] ?> </strong></h3>
+	</div>
+
+
+<?php endif; ?>
+</div>

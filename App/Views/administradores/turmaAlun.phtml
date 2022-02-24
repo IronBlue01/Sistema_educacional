@@ -1,0 +1,250 @@
+<script>
+
+	$(document).ready(function(){
+		$('#phone').mask("99812-8877");
+	});
+
+
+</script>
+
+<style media="screen">
+	img{
+		border-radius: 50%;
+	}
+	#bar-top{
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+</style>
+
+	<!--=====================================Breadcrumb=================================================-->
+	<div class="m-0 col-md-12">
+	<nav  aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="/">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page"><a href="/turma?curso=<?= $_GET['curso'] ?>">Turmas</a></li>
+			<li class="breadcrumb-item active" aria-current="page"><?= $this->view->infoTurma['nomeTurma']?> -
+				<?= 	$this->view->infoTurma['dia'] ?></li>
+	  </ol>
+	</nav>
+	<hr>
+	</div>
+	<!--=====================================Breadcrumb==========================================-->
+
+
+
+<div class="container-fluid p-3">
+<?php if (!$this->view->ProfessoresCadastrados==NULL): ?>
+
+	<table class="table bg-success text-center text-white rounded">
+		<tr style="cursor:pointer;" data-toggle="collapse" data-target=".prof" aria-expanded="true" aria-controls="collapseOne">
+			<th colspan="3"> <h5> Professores cadastrados para está turma </h5></th>
+		</tr>
+
+		<?php foreach ($this->view->ProfessoresCadastrados as $professor): ?>
+		<?php
+		switch ($professor['subcategoria']) {
+			case 'D':
+							$sub =  'Desenvolvimento Pessoal';
+				break;
+			case 'T':
+							$sub =  'Desenvolvimento Tecnológico';
+			break;
+			case 'A':
+							$sub =  'Adminsitrativo';
+			break;
+
+			default:
+							$sub =  '';
+				break;
+		}
+
+		?>
+		<tr class="collapse prof bg-white  font-weight-bolder text-dark"  >
+				<td><?= $professor['nome'] ?></td>
+				<td><?= $sub ?></td>
+				<td><i style="cursor:pointer;" class="fa fa-trash"></i> </td>
+		</tr>
+		<?php endforeach; ?>
+
+	</table>
+<?php endif; ?>
+
+		<div id="bar-top" class="row col-md-12 bg-primary p-3 m-0 justify-content-end d-flex">
+
+			<div class="m-0 p-0 col-6">
+				<h3 class="text-white m-2"><?= $this->view->infoTurma['nomeTurma']?> - <?= 	$this->view->infoTurma['dia'] ?></h3>
+			</div>
+
+			<div class="p-0 m-0  col-6 justify-content-end d-flex">
+				<button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#InsertAlun" name="button"> <i class="fa fa-plus"></i> Aluno</button>
+					<button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#InsertProf" name="button"> <i class="fa fa-plus"></i> Profº</button>
+				<button onclick="window.location='/edit_alun?turma=<?= $_GET['turma'] ?>'" type="button" class="btn btn-dark"> <i class="fa fa-pen"></i> Edit</button>
+			</div>
+
+		</div>
+
+
+		<div class="row col-md-12 bg-white p-2 m-0 rounded">
+
+
+
+			<hr>
+			<?php if($this->view->alunos != NULL): ?>
+			<table class="table">
+				<tr class="text-center">
+					<td><strong>Nº</strong></td>
+					<td><strong>Img</strong></td>
+					<td class="text-left"><strong>Nome</strong></td>
+					<td class="text-left"><strong>Username</strong></td>
+					<td><strong>Senha</strong></td>
+					<td><strong>Telefone</strong></td>
+					<td><strong>Editar</strong></td>
+					<td><strong>Remover</strong></td>
+				</tr>
+
+				<?php
+				     $i=1;
+						 foreach ($this->view->alunos as $aluno):
+				?>
+
+				<tr class="text-center">
+					<td style="vertical-align:middle;"><?= $i ?></td>
+					<td><img src="assets/dashboard/img/avatar/avatar.jpg" width="50px" height="50px"></td>
+					<td style="vertical-align:middle; text-align:left;"><?= $aluno['nome'] ?></td>
+					<td class="text-left" style="vertical-align:middle;"><?= $aluno['username'] ?></td>
+					<td style="vertical-align:middle;"><?= $aluno['senha'] ?></td>
+					<td style="vertical-align:middle;"><?= $aluno['Telefone'] ?></td>
+					<td style="vertical-align:middle;"> <i style="cursor:pointer;"   class="fa fa-pencil-alt fa-lg"></i>  </td>
+					<td style="vertical-align:middle;"> <i style="cursor:pointer;" data-toggle="modal" data-target="#excluirModal<?= $i ?>" class="fa fa-trash fa-lg"></i>  </td>
+				</tr>
+
+				<div class="modal fade" id="excluirModal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header bg-danger text-white">
+								<h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir este aluno(@)?</h5>
+								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">Selecione a opção excluir caso queira realmente excluir o anluno(@).</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" type="button" data-dismiss="modal" >Cancelar</button>
+								<a class="btn btn-danger" href="/deleteAlun?id=<?= $aluno['id_aluno'].'&turma='.$aluno['turma'] ?>">Excluir</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				 <?php $i++; endforeach;?>
+			</table>
+
+		<?php else: ?>
+
+							<div class="row col-12 justify-content-center d-flex mt-2">
+							<h5>AINDA NÃO HÁ ALUNOS CADASTRADOS PARA ESTÁ TURMA</h5>
+							</div>
+
+		<?php endif; ?>
+		</div>
+</div>
+
+
+
+
+<!--==============================================MODAL ALUNO===========================================================-->
+
+<div class="modal fade" id="InsertAlun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-success text-white">
+				<h5 class="modal-title" id="exampleModalLabel"> Inserir um novo aluno para a turma <?= $this->view->infoTurma['nomeTurma'] ?></h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+
+
+			<div class="row col-12 p-3 m-0 ">
+				<form class="col-12" action="/insereAluno" method="post">
+					<label><strong>Nome do aluno</strong></label>
+					<input class="form-control" type="text" name="nome">
+
+					<label class="mb-0 mt-2"><strong>Telefone</strong></label>
+					<input class="form-control" type="text" name="phone">
+
+					<label class="mb-0 mt-3"><strong>Username</strong></label>
+					<input class="form-control" type="text" name="username">
+
+					<label class="mb-0 mt-3"><strong>Senha</strong></label>
+					<input class="form-control" type="text" name="senha" value="123">
+					<input type="hidden" name="turma" value="<?= $this->view->infoTurma['id_turma'] ?>">
+					<input type="hidden" name="goBack" value="turmaAlun">
+					<input type="hidden" name="parameter">
+			</div>
+
+
+			<div class="modal-footer bg-primary">
+				<button class="btn btn-danger" type="button" data-dismiss="modal" >Cancelar</button>
+				<button class="btn btn-success" type="submit"><a>Inserir</a></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--=============================================END MODAL ALUNO============================================================-->
+
+
+<!--==============================================MODAL Professor===========================================================-->
+
+<div class="modal fade" id="InsertProf" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-success text-white">
+				<h5 class="modal-title" id="exampleModalLabel"> Inserir um novo professor para turma <?= $this->view->infoTurma['nomeTurma'] ?></h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+
+
+			<div class="row col-12 p-3 m-0 ">
+				<form class="col-12" action="/insereRelacaoProfessorTurma" method="post">
+					<label><strong>Nome do professor</strong></label>
+					<select class="form-control" name="professor">
+						<?php foreach ($this->view->professores as $professor): $x=0; ?>
+
+						<?php if($this->view->ProfessoresCadastrados!=NULL): ?>
+
+							<?php foreach($this->view->ProfessoresCadastrados as  $pcad): ?>
+										<?php if($pcad['id_professor']==$professor['id_professor']): ?>
+												<?php $x++; ?>
+										<?php endif; ?>
+							<?php endforeach; ?>
+
+							<?php if($x==0): ?>
+								<option value="<?= $professor['id_professor'].'-'.$professor['subcategoria'] ?>"><?= $professor['nome'] ?></option>
+							<?php endif; ?>
+
+						<?php else: ?>
+							<option value="<?= $professor['id_professor'].'-'.$professor['subcategoria'] ?>"><?= $professor['nome'] ?></option>
+						<?php endif; ?>
+
+						<?php endforeach;  ?>
+					</select>
+
+					<input type="hidden" name="id_turma" value="<?= $_GET['turma'] ?>">
+
+			</div>
+
+
+			<div class="modal-footer bg-primary">
+				<button class="btn btn-danger" type="button" data-dismiss="modal" >Cancelar</button>
+				<button class="btn btn-success" type="submit"><a>Inserir</a></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--=============================================END MODAL Professor============================================================-->

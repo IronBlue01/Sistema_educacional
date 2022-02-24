@@ -1,0 +1,58 @@
+<script type="text/javascript">
+	function cadastrar(element){
+		var id_turma 		 = $(element).data('turma');
+		var id_atividade =  $(element).data('atividade');
+	  $.ajax({
+			url: '/cadastroDeatividades?id_turma='+id_turma+'&&id_atividade='+id_atividade,
+			method: 'GET'
+		});
+	}
+</script>
+
+<h6>
+	<a class="text-info" href="/atividades?id_turma=<?= $_GET['id_turma'] ?>&&name=<?= $_GET['name'] ?>&&id_curso=<?= $_GET['id_curso'] ?>">Atividades liberadas</a> / Liberar atividades para turma
+</h6>
+<hr>
+<div class="container-fluid bg-white mb-0">
+	<div class="row p-2 ">
+			<h3>Liberar atividades</h3>
+	</div>
+
+	<table class="table text-center ">
+			<tr class="bg-gradient-success text-white font-weight-bolder">
+				<td>Video</td>
+				<td>Atividade</td>
+				<td>Módulo</td>
+				<td>Visualizar</td>
+				<td>Liberar</td>
+			</tr>
+			<?php $i=1; foreach ($this->view->atividades as $atividade): ?>
+			<tr>
+				<td  style="vertical-align:middle;">
+					<iframe width="260" height="115" src="https://www.youtube.com/embed/<?= $atividade['video'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</td>
+				<td style="vertical-align:middle;" class="vl"><?= $atividade['titulo'] ?></td>
+				<td style="vertical-align:middle;"><?= $atividade['nome_modulo'] ?></td>
+				<td style="vertical-align:middle; cursor:pointer;"  > <i class="fa fa-pen"></i> </td>
+				<td style="vertical-align:middle;">
+					<input type="hidden" name="id_turma" value="<?= $_GET['id_turma'] ?>">
+					<input type="hidden" name="atividade[]" value="<?= $atividade['id_atividade'] ?>">
+
+					<div style="cursor:pointer;" class="custom-control custom-switch ">
+						<?php if ($atividade['num']==0): ?>
+							<!--Desmarcado-->
+							<input  data-atividade="<?= $atividade['id_atividade'] ?>" data-turma="<?= $_GET['id_turma'] ?>" onclick="cadastrar(this)"  style="cursor:pointer;" type="checkbox" class="custom-control-input" id="customSwitches<?= $i ?>">
+							<label  style="cursor:pointer;" class="custom-control-label" for="customSwitches<?= $i ?>"></label>
+						<?php else: ?>
+							<!--Marcado-->
+								<input checked data-atividade="<?= $atividade['id_atividade'] ?>" data-turma="<?= $_GET['id_turma'] ?>" onclick="cadastrar(this)"  style="cursor:pointer;" type="checkbox" class="custom-control-input" id="customSwitches<?= $i ?>">
+							<label  style="cursor:pointer;" class="custom-control-label" for="customSwitches<?= $i ?>"></label>
+						<?php endif; ?>
+
+					</div>
+				</td>
+			</tr>
+			<?php $i++; endforeach; ?>
+	</table>
+
+</div>

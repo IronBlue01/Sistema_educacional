@@ -1,0 +1,213 @@
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<?php
+		switch ($_GET['sub']) {
+			case 'T':
+				$mod = "- Desenvolvimento tecnológico";
+				break;
+
+			case 'D':
+				$mod = "- Desenvolvimento Pessoal";
+				break;
+
+			case 'A':
+				$mod = "- Administração";
+				break;
+			default:
+				$mod = "";
+				break;
+		}
+
+	?>
+	<?php if ($this->view->modulos!=NULL): ?>
+	<h6><a class="text-info" href="/home_adm">Home /</a> <?= $mod ?></h6>
+	<?php else: ?>
+		<h2 onclick="window.location='/home_adm'" style="cursor:pointer;" class="ml-5 text-info"> <i class="fa fa-chevron-left"></i> Voltar</h2>
+	<?php endif; ?>
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<?php if ($this->view->modulos!=NULL):  ?>
+					<h1 class="h3 mb-0 text-gray-800">Módulos <?= $mod ?></h1>
+		<?php endif; ?>
+
+		<!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+	</div>
+
+	<div class="row">
+
+		<?php if ($this->view->modulos!=NULL): ?>
+		<?php
+		$i=1;
+		foreach ($this->view->modulos as $modulo):
+		if ($modulo['num']==1):
+		?>
+
+		<div style="cursor:pointer;" onclick="window.location='/v_atividades?modulo=<?= $modulo['id_modulo'] ?>&&sub=<?= $_GET['sub']?>&&nomeModulo=<?= $modulo['nome_modulo'] ?>'" class="card shadow mb-4 col-md-5 ml-2">
+
+			<style media="screen">
+				.number{
+					position: absolute;
+					margin-top: -20px;
+					margin-left: -20px;
+					border-radius: 50%;
+					padding: 10px;
+					width: 50px;
+					height: 50px;
+				}
+			</style>
+
+			<div class="bg-primary justify-content-center d-flex number">
+				<p style="font-size:15pt;" class="p-0 m-0 text-white"><?= $i ?></p>
+			</div>
+
+			<div class="card-header py-3">
+				<h6 class="m-0 ml-3 font-weight-bold text-primary"><?= $modulo['nome_modulo'] ?></h6>
+			</div>
+			<div class="card-body">
+				<div class="text-center">
+					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;" src="assets/dashboard/modulos/<?= $modulo['img'] ?>">
+				</div>
+
+				<p><?= $modulo['descricao'] ?></p>
+
+				<!--<div class="justify-content-end d-flex">
+						<a href="/v_atividades?modulo=<?= $modulo['id_modulo'] ?>&&sub=<?= $_GET['sub']?>" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm">Entrar</a>
+				</div>-->
+			</div>
+		</div>
+
+		<?php
+		$i++; 
+		endif;
+		endforeach;
+		?>
+	<?php else: ?>
+
+		<div class="mt-5 justify-content-center d-flex col-md-12">
+			<h3>Não há nehum conteúdo cadastrado aqui</h3>
+		</div>
+
+	<?php endif; ?>
+	</div>
+
+	<div class="row d-none">
+		<div style="cursor:pointer;" onclick="window.location='/v_atividades?modulo=7'" class="card shadow mb-4 col-md-5 ml-2">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Photoshop</h6>
+			</div>
+			<div class="card-body">
+				<div class="text-center">
+					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;" src="assets/dashboard/img/photoshop/capaphoto.jpg">
+				</div>
+
+				<p>Aprenda a utilizar a ferramenta photoshop</p>
+
+				<div class="justify-content-end d-flex">
+						<a href="/v_atividades?modulo=7" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Entrar</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div style="cursor:pointer;" onclick="window.location='/v_atividades?modulo=1'" class="card shadow mb-4 col-md-5 ml-2">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Word</h6>
+			</div>
+			<div class="card-body">
+				<div class="text-center">
+					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;" src="assets/dashboard/img/word/word.jpg">
+				</div>
+
+				<p>Aprenda a utilizar todos os recursos do Word</p>
+
+				<div class="justify-content-end d-flex">
+						<a href="/v_atividades?modulo=1" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Entrar</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div style="cursor:pointer;" onclick="window.location='/windows'" class="card shadow mb-4 col-md-5 ml-2">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Windows10</h6>
+			</div>
+			<div class="card-body">
+				<div class="text-center">
+					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;" src="assets/dashboard/img/pages/win.jpg">
+				</div>
+
+				<p>Aprenda a utilizar todos os recursos do windows10</p>
+
+				<div class="justify-content-end d-flex">
+						<a href="/windows" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Entrar</a>
+				</div>
+			</div>
+		</div>
+
+				<div style="cursor:pointer;" onclick="window.location='/v_atividades?modulo=3'" class="card shadow mb-4 col-md-5 ml-2">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">Excel</h6>
+					</div>
+					<div class="card-body">
+						<div class="text-center">
+							<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;" src="assets/dashboard/img/excel/excel.jpg">
+						</div>
+
+						<p>Aprenda a utilizar todos os recursos do Excel</p>
+
+						<div class="justify-content-end d-flex">
+								<a href="/v_atividades?modulo=3" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Entrar</a>
+						</div>
+					</div>
+				</div>
+
+
+
+	</div>
+
+<!--
+	<div class="row col-md-12 bg-white m-0  pt-3 pb-5 mb-5">
+		<div class="row col-md-12">
+			<h4 class="ml-2 mb-4">Módulos concluidos</h4>
+		</div>
+
+		<div class="card shadow mb-4 col-md-2 ml-2 p-0">
+			<div class="card-header py-3 ">
+				<h6 class="m-0 font-weight-bold text-primary text-center">Word</h6>
+			</div>
+			<div class="card-body p-0 m-0">
+				<div class="text-center p-0 m-0">
+					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4 m-0" style="width: 10rem;" src="assets/dashboard/img/word/word.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+-->
+
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLabel">Sair do painel?</h5>
+	<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">×</span>
+	</button>
+</div>
+<div class="modal-body">Selecione "Sair" Abaixo caso deseje realmente sair.</div>
+<div class="modal-footer">
+	<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+	<a class="btn btn-primary" href="/logout">Sair</a>
+</div>
+</div>
+</div>
+</div>
+
+</div>

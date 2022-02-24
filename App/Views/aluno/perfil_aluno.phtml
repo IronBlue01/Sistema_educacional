@@ -1,0 +1,22 @@
+<h4>Suas informações</h4>
+<hr>
+<div class="col-md-12 bg-white m-0 p-2">
+	<form  action="/UpPerfil" method="post">
+			<label class="mb-0"><strong>Nome</strong></label>
+			<input type="text" name="nome" class="form-control col-md-5 col-sm-12" value="<?= $this->view->infoAlun['nome'] ?>">
+
+			<label class="mb-0 mt-3"><strong>Username</strong></label>
+			<input type="text" disabled class="form-control col-md-5 col-sm-12" value="<?= $this->view->infoAlun['username'] ?>" name="username">
+
+
+			<label class="mb-0 mt-3"><strong>E-mail</strong></label>
+			<input type="text" class="form-control col-md-5 col-sm-12" value="<?= $this->view->infoAlun['email'] ?>" name="email">
+
+			<label class="mb-0 mt-3"><strong>Senha</strong></label>
+			<input type="text" class="form-control col-md-5 col-sm-12" value="<?= $this->view->infoAlun['senha'] ?>" name="senha">
+			<input type="hidden" name="id_aluno" value="<?= $this->view->infoAlun['id_aluno'] ?>">
+			<div class="row col-md-12 justify-content-end mt-4">
+					<button type="submit" class="btn btn-success">Atualizar</button>
+			</div>
+	</form>
+</div>

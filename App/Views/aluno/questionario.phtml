@@ -1,0 +1,639 @@
+<!-- Begin Page Content -->
+<div class="container-fluid p-0">
+	<h6><a class="text-info" href="/dash_aluno">Home / </a> <a class="text-info" href="/windows">Exercícios</a> / Questionário windows10</h6>
+	<h1>Questionário windows10</h1>
+
+<?php
+
+if(isset($_SESSION['enviado'])){
+
+?>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Aviso</strong> Questionario enviado com suceso
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php unset($_SESSION['enviado']); } ?>
+
+
+
+<?php if ($this->view->num['num']==0): ?>
+	<div class="contaiiner-fluid p-0">
+		<div class="row col-md-12 m-0 bg-white p-4 pt-0">
+			<form class="col-md-12 p-0" action="/questionarioAlun" method="post">
+			<!--Pergunta 1-->
+			<div class="row col-md-12 mt-3 ">
+				<p class="mb-2"><strong>1) Oque é um sistema operacional?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-md-12 col-sm-12">
+								<div class="pr-2 ml-4">
+										<input id="a1"  type="radio" name="p1" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a1">Um conjunto de programas com a finalidade de resolver diferentes tipos de problemas?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a2"  type="radio" name="p1" value="2" >
+								</div>
+								<div class="row col-8">
+									<label for="a2">Um unico programa que funciona em conjunto com o navegador de internet?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a3"  type="radio" name="p1" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a3">Um sistema de computadores interligados?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 2-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>2) Qual o principal sistema operacional utilizado no mundo hoje?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a4"  type="radio" name="p2" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a4">Windows8?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a5"  type="radio" name="p2" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a5">Windows10?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a6"  type="radio" name="p2" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a6">Linux?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a7"  type="radio" name="p2" value="4">
+								</div>
+								<div class="row col-8">
+									<label for="a7">MacOX?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+
+
+			<!--Pergunta 3-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>3) Quais as 3 funções do gerenciador de tarefas?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a8"  type="radio" name="p3" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a8">Finalizar programas, Verificar desempenho do computador, Parar a inicialização automatica de  programas?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a9"  type="radio" name="p3" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a9">Resetar o computador em modo de segurança?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a10"  type="radio" name="p3" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a10">Reativar as configurações de segurança?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 4-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>4) Caso uma tecla do seu teclado esteja estragada qual programa você pode utilizar para contornar isto?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a11"  type="radio" name="p4" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a11">Bloco de notas</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a12"  type="radio" name="p4" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a12">Wordpad</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a13"  type="radio" name="p4" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a13">Notas auto adesivas / Sticker note</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a14"  type="radio" name="p4" value="4">
+								</div>
+								<div class="row col-8">
+									<label for="a14">Teclado virtual</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 5-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>5) Qual tecla de atalho fecha uma aba do navegador?</strong></p>
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a15"  type="radio" name="p5" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a15">Ctrl + w</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a16"  type="radio" name="p5" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a16">Ctrl + Y</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a17"  type="radio" name="p5" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a17">Ctrl + shift + w</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a18"  type="radio" name="p5" value="4">
+								</div>
+								<div class="row col-8">
+									<label for="a18">Nehuma das alternativas acima</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+
+			<!--Pergunta 6-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>6) Qual programa podemos utilizar caso estejamos sem o programa word?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a19"  type="radio" name="p6" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a19">Excel</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a20"  type="radio" name="p6" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a20">Word</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+
+						<!--Alternativa 3-->
+						<div class="row col-12">
+							<div class="pr-2 ml-4">
+									<input id="a21"  type="radio" name="p6" value="3">
+							</div>
+							<div class="row col-8">
+								<label for="a21">Calculadora</label>
+							</div>
+						</div>
+						<!--Fim alternativa 3-->
+
+						<!--Alternativa 4-->
+						<div class="row col-12">
+							<div class="pr-2 ml-4">
+									<input id="a22"  type="radio" name="p6" value="4">
+							</div>
+							<div class="row col-8">
+								<label for="a22">Nenhuma das alternativa</label>
+							</div>
+						</div>
+						<!--Fim alternativa 4-->
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 7-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>7) Qual a tecla de atalho para criar uma pasta?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a23"  type="radio" name="p7" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a23">Ctrl + shift + A</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a24"  type="radio" name="p7" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a24">Ctrl + shift + B</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a25"  type="radio" name="p7" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a25">Ctrl + shift + N</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 8-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>8) Qual tecla de atalho utilizamos para colar um arquivo?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a26"  type="radio" name="p8" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a26">Ctrl + V</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a27"  type="radio" name="p8" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a27">Ctrl + Y</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a28"  type="radio" name="p8" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a28">Windows + G</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 9-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>9) Qual programa utilizamos para criar anotações de forma rápida em nosso computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a29"  type="radio" name="p9" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a29">Sticker note</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a30"  type="radio" name="p9" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a30">Calculadora</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a31"  type="radio" name="p9" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a31">Bloco de notas</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a32"  type="radio" name="p9" value="4">
+								</div>
+								<div class="row col-8">
+									<label for="a32">WordPad</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 10-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>10) Qual programa utilizamos para criar lembretes no computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a33"  type="radio" name="p10" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a33">Sticker note</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a34"  type="radio" name="p10" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a34">Calculadora</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a35"  type="radio" name="p10" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a35">Bloco de notas</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a36"  type="radio" name="p10" value="4">
+								</div>
+								<div class="row col-8">
+									<label for="a36">WordPad</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 11-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>11) Qual o nome da tela inicial do computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a37"  type="radio" name="p11" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a37">Área de trabalho</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a38"  type="radio" name="p11" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a38">Explorador de arquivos</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a39"  type="radio" name="p11" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a39">Navegador</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 12-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>12) Caso você estivesse sem um programa de edição de textos como o word, qual programa
+					nativo do windows10 você usaria?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a40"  type="radio" name="p12" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a40">Bloco de notas</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a41"  type="radio" name="p12" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a41">Calendário</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+								<!--Alternativa 1-->
+								<div class="row col-12">
+									<div class="pr-2 ml-4">
+											<input id="a42"  type="radio" name="p12" value="3">
+									</div>
+									<div class="row col-8">
+										<label for="a42">WordPad</label>
+									</div>
+								</div>
+								<!--Fim alternativa 1-->
+
+								<!--Alternativa 1-->
+								<div class="row col-12">
+									<div class="pr-2 ml-4">
+											<input id="a43"  type="radio" name="p12" value="4">
+									</div>
+									<div class="row col-8">
+										<label for="a43">Nehuma das alternativas</label>
+									</div>
+								</div>
+								<!--Fim alternativa 1-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 13-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>13) Qual tecla de atalho utilizamos para copiar um arquivo?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a44"  type="radio" name="p13" value="1" required>
+								</div>
+								<div class="row col-8">
+									<label for="a44">Ctrl + N</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a45"  type="radio" name="p13" value="2">
+								</div>
+								<div class="row col-8">
+									<label for="a45">Ctrl + C</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a46"  type="radio" name="p13" value="3">
+								</div>
+								<div class="row col-8">
+									<label for="a46">Ctrl + v</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+
+			<div class="row col-12 bg-light p-2 m-0 justify-content-end d-flex mt-5">
+				<button type="submit" class="btn btn-success">Enviar</button>
+			</div>
+			</form>
+		</div>
+	</div>
+<?php else: ?>
+
+<h3>Parabéns, Seu Questionário foi enviado aguarde a correção</h3>
+
+<?php  endif; ?>
+</div>

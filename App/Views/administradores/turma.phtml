@@ -1,0 +1,61 @@
+<style media="screen">
+	.pointer{
+		cursor: pointer;
+	}
+</style>
+
+<!--=====================================Breadcrumb=================================================-->
+<div class="m-0 col-md-12">
+<nav  aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+		<li class="breadcrumb-item"><a href="/turmas">Cursos</a></li>
+    <!--<li class="breadcrumb-item active" aria-current="page">Turmas - Assistente administrativo</li>-->
+  </ol>
+</nav>
+</div>
+<!--=====================================Breadcrumb==========================================-->
+
+
+
+<div class="row col-md-12 p-0 m-0">
+	<div class="row col-md-5 m-0 pt-3">
+		<h3 ><?= $this->view->nome[0]['nomeCurso'] ?></h3>
+	</div>
+	<div class="row justify-content-end m-0  col-md-7">
+	<a href="/modulos?curso=<?= $_GET['curso'] ?>"><button type="button" class="btn btn-success mb-3 p-3"></i>Modulos deste curso</button></a>
+	</div>
+
+</div>
+
+<div class="container p-0 m-0 col-12">
+
+<div class="row col-md-12 bg-white rounded p-2 m-0">
+
+<?php foreach ($this->view->turmas as $turma): ?>
+<!--BLOCO DE REPETIÇÃO-->
+		<div onclick="window.location='/turmaAlun?turma=<?= $turma['id_turma'] ?>&&curso=<?= $_GET['curso'] ?>'" class="col-xl-3 col-md-6 mb-4 pointer">
+			<div class="card border-left-primary shadow h-100 py-2">
+				<div class="card-body p-2">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $turma['dia']?></div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $turma['nomeTurma'] ?></div>
+							<p class="m-0"><?= $turma['horario_ini'] ?>:00 - <?= $turma['horario_ter'] ?>:00</p>
+						</div>
+						<div class="col-auto">
+							<i class="fas fa-users fa-2x text-gray-300"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!--BLOCO DE REPETIÇÃO-->
+<?php endforeach; ?>
+
+</div>
+
+
+
+
+</div>

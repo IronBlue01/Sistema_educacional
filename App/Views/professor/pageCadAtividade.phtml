@@ -1,0 +1,54 @@
+<h6>
+	<a class="text-info" href="/atividades?id_turma=<?= $_GET['id_turma'] ?>&&name=<?= $_GET['name'] ?>&&id_curso=<?= $_GET['id_curso'] ?>">Atividades liberadas</a>
+	/ Cadastrar atividades para turmas de
+</h6>
+<hr>
+<div class="container-fluid">
+	<form class="col-12" action="/cad_atividade" method="post" enctype="multipart/form-data">
+
+		<input type="hidden" name="id_curso" value="<?= $_GET['id_curso'] ?>">
+
+		<label for="titulo" class="mb-0"> <strong>Modulo</strong> </label>
+		<select class="form-control col-md-5 mb-3" name="modulo">
+			<?php foreach ($this->view->modulos as $modulo): ?>
+				<?php if ($this->view->id_curso['subcategoria']==$modulo['subcategoria']): ?>
+					<option value="<?= $modulo['id_modulo'] ?>"><?= $modulo['nome_modulo'] ?></option>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</select>
+
+		<input type="hidden" name="subcategoria" value="<?= $this->view->id_curso['subcategoria'] ?>">
+
+
+		<input type="hidden" name="id_turma" value="<?= $_GET['id_turma'] ?>">
+		<input type="hidden" name="nome_turma" value="<?= $_GET['name'] ?>">
+		<input type="hidden" name="id_curso" value="<?= $_GET['id_curso'] ?>">
+
+			<label for="titulo" class="mb-0"> <strong>Titulo</strong> </label>
+			<input id="titulo" type="text" name="titulo" class="form-control col-md-5 mb-2" placeholder="De um titulo para a atividade">
+
+			<label for="img" class="mb-0"><strong>Imagem de capa</strong></label>
+			<input id="img" type="file" class="form-control col-md-5 mb-3" name="img">
+
+			<label for="description" class="mb-0"><strong>Descrição</strong></label>
+			<textarea class="form-control col-md-5" name="descricao" rows="3" ></textarea>
+			<!--<input id="description" type="text" class="form-control col-5 mb-3" name="descricao" >-->
+
+			<label for="arquivo" class="mb-0 mt-3"><strong>Disponibilizar imagem para vizualização</strong></label>
+			<input id="arquivo" type="file" class="form-control col-md-5 mb-3" name="img_view" >
+
+			<label for="arquivo" class="mb-0 mt-2"><strong>Disponibilizar arquivo para download</strong></label>
+			<input id="arquivo" type="file" class="form-control col-md-5" name="arquivo" >
+
+			<label for="video" class="mb-0 mt-3"><strong>Disponibilizar uma videoaula sobre o assunto</strong></label>
+			<input id="video" type="text" class="form-control col-md-5" name="video" >
+
+			<label for="data" class="mb-0 mt-3"><strong>Data de entrega</strong></label>
+			<input id="data" type="date" class="form-control col-md-5" name="data">
+
+			<div class="col-12 p-4 bg-primary mt-3 justify-content-end d-flex">
+					<button type="submit" class="btn btn-success">Cadastrar</button>
+			</div>
+
+	</form>
+</div>

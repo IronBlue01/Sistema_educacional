@@ -1,0 +1,133 @@
+<style>
+		.pointer{
+			cursor: pointer;
+		}
+</style>
+<!--=====================================Breadcrumb=================================================-->
+<div class="m-0 col-md-12">
+<nav  aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Cadastrar uma nova turma</li>
+  </ol>
+</nav>
+</div>
+<!--=====================================Breadcrumb==========================================-->
+<div class="row justify-content-end pr-5">
+	<button title="Adicionar turma" class="btn btn-success p-3" name="button"><i class="fa fa-plus "></i> Turma</button>
+</div>
+
+<hr>
+<div class="container m-0 p-0">
+	<div  class="row col-md-12 bg-white  rounded p-2 m-0 mb-2">
+			<?php foreach ($this->view->cursos as $curso): ?>
+			<div onclick="window.location='/turma?curso=<?= $curso['id_curso'] ?>'" class="card border-left-primary shadow h-100 py-0  pointer ml-2 mt-2">
+					<div  class="card-body  p-3">
+							<div class="row no-gutters align-items-center">
+									<div class="col mr-2 mt-2">
+											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $curso['nomeCurso'] ?></div>
+											<!--<div class="h7 mb-0 font-weight-bold text-gray-800">5 turmas</div>-->
+									</div>
+							</div>
+					</div>
+			</div>
+			<?php endforeach; ?>
+	</div>
+
+
+
+
+	<div class="row p-2 bg-white m-0 rounded">
+
+		<form class="col-md-12" action="/insereTurma" method="post">
+
+			<div class="row col-md-12 ml-0">
+					<div class="row col-md-5">
+						<label class="mb-0 mt-2" for="nome"><strong>Nome da turma</strong></label>
+						<input id="nome" type="text" class="form-control" name="nome">
+					</div>
+
+					<div class="row col-md-5 ml-3">
+						<label class="mb-0 mt-2" for="curso"><strong>Curso</strong></label>
+						<select id="curso" class="form-control" name="curso">
+							<?php foreach ($this->view->cursos as $curso): ?>
+							<option value="<?= $curso['id_curso'] ?>"><?= $curso['nomeCurso']  ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+			</div>
+
+			<div class="row col-md-12 mt-2">
+
+	<!--			<div class="row col-md-5">
+					<label class="mb-0 mt-1" for="professor"> <strong> Ministrado por:</strong></label>
+					<select id="professor" class="form-control" name="professor">
+						<?php foreach ($this->view->dataProf as $professor): ?>
+						<option value="<?= $professor['id_professor'] ?>"><?= $professor['nome'] ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+-->
+				<input type="hidden" name="subcategoria" value="<?= $professor['subcategoria']  ?>">
+
+				<div class="row col-md-3 ml-0">
+					<label class="mb-0 mt-1" for="professor"> <strong> Horario de início</strong></label>
+					<select id="professor" class="form-control" name="horario_ini">
+						<option value="8">8:00</option>
+						<option value="9">9:00</option>
+						<option value="10">10:00</option>
+						<option value="13">13:00</option>
+						<option value="14">14:00</option>
+						<option value="15">15:00</option>
+						<option value="16">16:00</option>
+						<option value="17">17:00</option>
+						<option value="18">18:00</option>
+						<option value="19">19:00</option>
+						<option value="20">20:00</option>
+						<option value="21">21:00</option>
+					</select>
+				</div>
+				<div class="row col-md-3 ml-3">
+					<label class="mb-0 mt-1" for="professor"> <strong> Horario de termino</strong></label>
+					<select id="professor" class="form-control" name="horario_ter">
+						<option value="9">9:00</option>
+						<option value="10">10:00</option>
+						<option value="11">11:00</option>
+						<option value="13">13:00</option>
+						<option value="14">14:00</option>
+						<option value="15">15:00</option>
+						<option value="16">16:00</option>
+						<option value="17">17:00</option>
+						<option value="18">18:00</option>
+						<option value="19">19:00</option>
+						<option value="20">20:00</option>
+						<option value="21">21:00</option>
+						<option value="22">22:00</option>
+					</select>
+				</div>
+
+
+			</div>
+
+			<div class="row col-md-12 mt-3 ml-0 ">
+				<div class="row col-md-4 ">
+					<label class="mb-0" for="dia"><strong>Dia da semana</strong></label>
+					<select class="form-control" name="dia">
+						<option value="segunda-feira">Segunda-feira</option>
+						<option value="Terça-feira">Terça-feira</option>
+						<option value="Quarta-feira">Quarta-feira</option>
+						<option value="Quinta-feira">Quinta-feira</option>
+						<option value="Sexta-feira">Sexta-feira</option>
+						<option value="Sábado">Sábado</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row col-md-12 justify-content-end mt-3">
+				<button type="submit" class="btn btn-success">Cadastrar turma</button>
+			</div>
+
+
+		</form>
+	</div>
+</div>

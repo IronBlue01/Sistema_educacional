@@ -1,0 +1,305 @@
+
+<h6>
+		<?php
+		$id_modulo    = $_GET['id_modulo'];
+		$id_turma     = $_GET['id_turma'];
+		//$id_curso     = $_GET['id_curso'];
+		//$subcategoria = $_GET['subcategoria'];
+		?>
+
+
+
+</h6>
+<!--=====================================Breadcrumb=================================================-->
+<div class="m-0 col-md-12">
+<nav  aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/AtividadesModulo?id_modulo=50&&id_turma=90&&id_curso=21&&subcategoria=T">Aulas</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Aula - <?= $this->view->atividade['titulo'] ?></li>
+
+	</ol>
+</nav>
+<hr>
+</div>
+<!--=====================================Breadcrumb==========================================-->
+
+<style media="screen">
+	img{
+		border-radius: 50%;
+	}
+	#bar-top{
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+	.fundo{
+		background-color: #96F99F;
+		color: #3C3E3C;
+	}
+</style>
+
+<div class="row col-md-12 p-3 bg-white m-0 mb-2 rounded">
+	<div class="row col-md-4  p-2">
+	<div class="embed-responsive embed-responsive-16by9">
+	  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $this->view->atividade['video'] ?>" allowfullscreen></iframe>
+	</div>
+	</div>
+	<div style="height:100px;" class="row col-md-6 ml-3 p-2">
+		<div class="row col-md-12 p-0 m-0 ">
+			<h3><?= $this->view->atividade['titulo'] ?></h3>
+		</div>
+			<h6>DESCRIÇÃO</h6>
+		<div class="row col-md-12  m-0 p-0">
+			<p><?= $this->view->atividade['description'] ?></p>
+		</div>
+	</div>
+
+	<div class="row col-md-12 m-0 p-2 ">
+
+		<h6 class="text-dark">ARQUIVOS PARA DOWNLOAD DA AULA</h6>
+
+	<table class="table m-0 table-hover ">
+		<?php foreach ($this->view->atividadesLiberadas as $atividade): ?>
+
+			<?php
+			$nomeArq = explode('.',$atividade['arquivo']);
+			$nomeArq = end($nomeArq);
+			switch ($nomeArq) {
+				case 'pptx':
+					$icone = 'power.png';
+					break;
+					case 'xlsx':
+						$icone = 'excel.png';
+						break;
+
+						case 'docx':
+							$icone = 'word.png';
+						break;
+
+						case 'png':
+							$icone = 'img.png';
+						break;
+
+						case 'jpg':
+							$icone = 'img.png';
+						break;
+
+						case 'pdf':
+							$icone = 'pdf.png';
+						break;
+
+						case 'jpeg':
+							$icone = 'img.png';
+						break;
+
+				default:
+					$icone = 'icon.svg';
+					break;
+			}
+			?>
+
+		<tr>
+			<td style="vertical-align:middle; width:50px;">
+				<!--<i class="fas text-warning fa-folder fa-3x mt-3 mb-3"></i>-->
+				<img src="assets/dashboard/icones/<?= $icone ?>"  width="50px" height="50px">
+			</td>
+			<td  style="vertical-align:middle;"> <p style="font-size:15pt;" class="m-0"><?= $atividade['arquivo'] ?> </p></td>
+			<td style="vertical-align:middle; cursor:pointer">
+				<a download href="assets/dashboard/atividades/arquivo/<?= $atividade['arquivo'] ?>">
+				<i class="fas text-success fa-download fa-2x  "></i>
+				</a>
+			</td>
+		</tr>
+
+
+<?php endforeach; ?>
+	</table>
+	</div>
+
+</div>
+
+		<div id="bar-top" class="row col-md-12 bg-primary p-3 m-0 ">
+				<div class="col-md-6">
+					 <h4 class="text-white text-left m-2">Atividades entregues <?= $this->view->infoTurma['nomeTurma']?> - <?= 	$this->view->infoTurma['dia'] ?></h4>
+				</div>
+
+		</div>
+
+<table class="table">
+	<tr class="text-center">
+		<td><strong>Arquivo</strong></td>
+		<td><strong>Img</strong></td>
+		<td class="text-left"><strong>Nome</strong></td>
+		<!--<td><strong>Atividade</strong></td>-->
+		<td><strong>Data de entrega</strong></td>
+		<td><strong>Nota</strong></td>
+		<td><strong>Corrigir</strong></td>
+		<td><strong>Excluir</strong></td>
+		<td><strong>Baixar</strong></td>
+	</tr>
+
+
+	<?php
+	$i = 1;
+	foreach ($this->view->trabalhos as $trabalho):
+
+	$primeiroNome = explode(' ',$trabalho['nome']);
+	$primeiroNome = $primeiroNome[0];
+	if ($trabalho['nota']>=1) {
+		$classe = "fundo";
+	}else{
+		$classe = NULL;
+	}
+	?>
+	<tr class="text-center <?= $classe ?>">
+		<?php
+		$nomeArq = explode('.',$trabalho['nomeArquivo']);
+		$nomeArq = end($nomeArq);
+		switch ($nomeArq) {
+			case 'pptx':
+				$icone = 'power.png';
+				break;
+				case 'xlsx':
+					$icone = 'excel.png';
+					break;
+
+					case 'docx':
+						$icone = 'word.png';
+					break;
+
+					case 'pdf':
+						$icone = 'pdf.png';
+					break;
+
+					case 'png':
+						$icone = 'img.png';
+					break;
+
+					case 'jpg':
+						$icone = 'img.png';
+					break;
+
+					case 'jpeg':
+						$icone = 'img.png';
+					break;
+
+			default:
+				$icone = 'icon.svg';
+				break;
+		}
+		?>
+		<td style="vertical-align:middle;"> <img src="assets/dashboard/icones/<?= $icone ?>" width="50px" height="50px"></td>
+		<td>
+
+			<img src="assets/dashboard/img/avatar/avatar.jpg" width="50px" height="50px">
+		</td>
+
+		<td style="vertical-align:middle; text-align:left;" title="<?= $trabalho['nome'] ?>"><?= $primeiroNome ?> </td>
+		<!--<td style="vertical-align:middle;"><?= $trabalho['nomeAtividade']  ?></td>-->
+		<td style="vertical-align:middle;"><?= $trabalho['data']  ?></td>
+		<td style="vertical-align:middle;">
+			<?php if($trabalho['nota']==0){ ?>
+				Aguardando Correção
+			<?php }else{ ?>
+				<?= $trabalho['nota'] ?>
+			<?php } ?>
+		</td>
+		<td style="vertical-align:middle;">
+			 <a data-toggle="modal" data-target="#Corrigir<?= $trabalho['id_entrega'] ?>" href="#">
+				 <i style="cursor:pointer;"   class="fa fa-pencil-alt fa-lg"></i>
+			 </a>
+		</td>
+		<td style="vertical-align:middle;">
+			<i style="cursor:pointer;" data-toggle="modal" data-target="#excluirModal<?= $i ?>" class="fa fa-trash fa-lg"></i></a>
+		 </td>
+
+	<td style="vertical-align:middle;">
+				<a href="assets/dashboard/arquivo_alunos/<?= $trabalho['nomeArquivo'] ?>" download="" title="Baixar arquivo do aluno">
+						<i style="cursor:pointer;"   class="fa fa-download fa-lg"></i>
+				</a>
+	</td>
+	</tr>
+
+
+	<div class="modal show" id="Corrigir<?= $trabalho['id_entrega'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-info text-white">
+					<h5 class="modal-title" id="exampleModalLabel">Correção do trabalho de <?= $primeiroNome ?></h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<p>Analise o trabalho do aluno e atribua a nota condizente.</p>
+
+					<div class="row col-12 m-0 p-2 ">
+						<div class="row col-md-2 p-0  m-0">
+								<img class="m-0 mb-3" src="assets/dashboard/icones/<?= $icone ?>"  width="50px" height="50px">
+						</div>
+						<div class="row col-md-6 m-0 p-0 ">
+							<p class="mt-3"> <?= $trabalho['nomeAtividade'] ?> </p>
+						</div>
+
+						<div class="row col-md-3 m-0 p-0 ">
+									<a href="assets/dashboard/arquivo_alunos/<?= $trabalho['nomeArquivo'] ?>" download="" title="Baixar arquivo do aluno">
+											<i style="cursor:pointer;"   class="fa fa-download fa-lg mt-3"></i>
+									</a>
+						</div>
+
+					</div>
+
+
+					<hr>
+					<form class="col-md-12 m-0 p-0" action="/corrigir" method="post">
+						<label class="mb-0"><strong>Atribuir Nota</strong></label>
+						<input class="form-control col-md-3" type="number" min="0" max="100" name="nota" value="<?= $trabalho['nota'] ?>">
+
+						<label class="mt-3 mb-0"><strong>Observação sobre o trabalho</strong></label>
+						<textarea class="form-control" name="obs" rows="2" cols="2"><?= $trabalho['obs'] ?></textarea>
+
+						<input type="hidden" name="id_entrega" value="<?= $trabalho['id_entrega']?>">
+						<input type="hidden" name="id_turma" value="<?= $_GET['id_turma']?>">
+				</div>
+				<input type="hidden" name="id_modulo" value="<?= $_GET['id_modulo'] ?>">
+				<input type="hidden" name="id_atividade" value="<?= $_GET['id_atividade'] ?>">
+				<div class="modal-footer">
+					<button class="btn btn-danger" type="button" data-dismiss="modal" >Cancelar</button>
+					<button class="btn btn-success" type="submit">Corrigido</button>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--====================================================================MODAL EXCCLUSÃO======================-->
+					<div class="modal fade" id="excluirModal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header bg-danger text-white">
+									<h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir esta atividade?</h5>
+									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">Selecione a opção excluir caso queira realmente excluir está atividade.</div>
+								<div class="modal-footer">
+									<button class="btn btn-success" type="button" data-dismiss="modal" >Cancelar</button>
+									<a class="btn btn-danger" href="/removerTrab?id_entrega=<?= $trabalho['id_entrega'].'&&id_turma='.$_GET['id_turma'] ?>&&id_modulo=<?= $_GET['id_modulo'] ?>&&id_atividade=<?= $_GET['id_atividade'] ?>&&id_curso=<?= $_GET['id_curso'] ?>&&subcategoria=<?= $_GET['subcategoria'] ?>">Excluir</a>
+								</div>
+							</div>
+						</div>
+					</div>
+			<!--====================================================================MODAL EXCCLUSÃO======================-->
+
+
+
+
+
+
+	<?php
+		$i++;
+ 		endforeach;
+ 	?>
+</table>

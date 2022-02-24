@@ -1,0 +1,99 @@
+<?php
+	//Variaveis globais da url
+	$idTurma  = $_GET['id_turma'];
+	$sub      = $_GET['subcategoria'];
+?>
+<style media="screen">
+#header {
+background: url(https://images.unsplash.com/photo-1415795854641-f4a487a0fdc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) center center / cover no-repeat ;
+}
+</style>
+<script type="text/javascript">
+	function cadastrar(numero,turma){
+	  $.ajax({
+			url: '/prof_teste?id_modulo='+numero+'&&id_turma='+turma,
+			method: 'GET'
+		});
+	}
+</script>
+
+<header>
+
+</header>
+<h6>
+	 <a href="/P_turma?id_turma=<?= $_GET['id_turma'] ?>">Voltar</a>
+ </h6>
+<div class="row col-md-12">
+	<h4>Trabalhos entregues turma <?= $this->view->infoTurma['nomeTurma'] ?> - <?= $this->view->infoTurma['dia'] ?></h4>
+</div>
+
+<nav class="bg-dark navbar-dark">
+	<!--
+  <div class="container">
+    <a href="" class="navbar-brand"><i class="fas fa-tree mr-2"></i>Forest</a>
+  </div>
+-->
+  </nav>
+	<!--
+   <section id="header" class="jumbotron text-center">
+     <h1 class="display-3 ">FOREST</h1>
+     <p class="lead text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+     <a href="" class="btn btn-primary">Click</a>
+     <a href="" class="btn btn-secondary">Click</a>
+	 </section>
+-->
+<section id="gallery">
+  <div class="container-fluid">
+		<form action="#" class="col-md-12" method="post">
+
+			<input type="hidden" name="tamanho" value="<?= $this->view->tamanho ?>">
+			<div class="row col-md-12 p-2 m-0 justify-content-end">
+				<!--<button type="submit" class="btn btn-success" name="button">Salvar</button>-->
+			</div>
+    <div class="row">
+
+<?php
+		$i=1;
+		foreach ($this->view->modulos as $modulo):
+		$course   = $modulo['curso'];
+		$idModulo = $modulo['id_modulo'];
+		$path     = "/AtividadesModulo?id_modulo=".$idModulo."&&id_turma=".$idTurma."&&id_curso=".$course."&&subcategoria=".$sub;
+?>
+	<!--BLOCO DE REPETIÇÃO-->
+  <div class="col-lg-4 mb-4">
+    <div class="card">
+      <img src="assets/dashboard/modulos/<?= $modulo['img'] ?>" alt="" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title"><?= $modulo['nome_modulo'] ?></h5>
+
+        <!--<p class="card-text"><i class="fa fa-folder fa-lg text-warning"></i> 5 Atividades disponíveis</p>-->
+				<div class="row col-12">
+					<!---->
+	        <!--<a href="" class="btn btn-outline-danger btn-sm mr-2"><i class="far fa-heart"></i></a>-->
+
+					<div style="cursor:pointer;" class="custom-control col-1 custom-switch ">
+						<?php if ($modulo['num']==1): ?>
+						<input onclick="cadastrar(<?= $modulo['id_modulo'] ?>,<?= $_GET['id_turma'] ?>)" checked  style="cursor:pointer;" type="checkbox" id="customSwitches<?= $i ?>"  name="libera[]"  class="custom-control-input">
+					<?php else: ?>
+						<input onclick="cadastrar(<?= $modulo['id_modulo'] ?>,<?= $_GET['id_turma'] ?>)"  style="cursor:pointer;" type="checkbox" id="customSwitches<?= $i ?>"  name="libera[]"  class="custom-control-input">
+					<?php endif; ?>
+
+
+						<label  style="cursor:pointer;" class="custom-control-label" for="customSwitches<?= $i ?>">Status</label>
+					</div>
+
+				</div>
+				<div class="row col-md-12 justify-content-end  m-0">
+					<a href="<?= $path ?>" class="btn btn-outline-success btn-sm mr-2">Entrar</a>
+				</div>
+      </div>
+     </div>
+    </div>
+
+
+		<!--BLOCO DE REPETIÇÃO-->
+		<?php $i++; endforeach; ?>
+  </div>
+		</form>
+</div>
+</section>

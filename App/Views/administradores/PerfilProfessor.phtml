@@ -1,0 +1,53 @@
+
+
+<?php foreach ($this->view->turmas as  $turma): ?>
+
+<style media="screen">
+	#course{
+		background: url("assets/dashboard/images/processador.jpg");
+	}
+</style>
+<div class="col-md-4">
+    <section class="card">
+        <div id="course" class="twt-feed blue-bg bg-info">
+
+					<a href="/Turma?id_turma=<?= $turma['id_turma'] ?>">
+            <div class="corner-ribon black-ribon">
+                <i class="ti-settings"></i>
+            </div>
+						</a>
+            <div class="fa fa-desktop wtt-mark"></div>
+
+            <div class="media">
+              <!--  <a href="#">
+                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="assets/dashboard/images/admin.jpg">
+                </a>-->
+                <div class="media-body">
+                    <h2 class="text-white display-6"><?= $turma['nomeCurso'] ?>-<?=$turma['serie']  ?></h2>
+                    <p class="text-light">---</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="weather-category twt-category">
+            <ul>
+                <li class="active">
+                    <h5 class="text-success"><?= $turma['dia'] ?></h5>
+										Dia
+                </li>
+                <li>
+                    <h5 class="text-warning"><?= $turma['NumAlun'] ?></h5>
+                    Alunos
+                </li>
+								<li>
+                    <h5 class="text-info" style="font-size:12pt;">19:00-20:00</h5>
+                    Horário
+                </li>
+            </ul>
+        </div>
+
+		<div class="col-md-5 m-0 p-0 pt-1 bg-success">
+		</div>
+    </section>
+</div>
+<?php endforeach; ?>

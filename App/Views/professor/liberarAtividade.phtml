@@ -1,0 +1,67 @@
+
+
+<h6>
+	<a class="text-info" href="/atividades?id_turma=<?= $_GET['id_turma'] ?>&&name=<?= $_GET['name'] ?>&&id_curso=<?= $_GET['id_curso'] ?>">Atividades liberadas</a> / Liberar atividades para turma
+</h6>
+<hr>
+
+<div class="container-fluid bg-white mb-0">
+	<div class="row p-2 ">
+			<h3>Liberar atividades</h3>
+	</div>
+
+	 <form  action="/cad_liberar_atividade" method="post">
+
+		 <?php if (isset($this->view->contador)): ?>
+		 		<input type="hidden" name="contador">
+				<input type="hidden" name="id_atividade" value="<?= $this->view->id_atividade ?>">
+		 <?php endif; ?>
+
+		<input type="hidden" name="tamanho" value="<?= $this->view->tamanho ?>">
+
+	<div class="justify-content-end d-flex mb-3 mt-0">
+		<button class="btn btn-info btn-lg bg-gradient-info" type="submit">Salvar</button>
+	</div>
+
+
+	<table class="table text-center ">
+			<tr class="bg-gradient-success text-white font-weight-bolder">
+				<td>Video</td>
+				<td>Atividade</td>
+				<td>Módulo</td>
+				<td>Visualizar</td>
+				<td>Liberar</td>
+			</tr>
+			<?php $i=1; foreach ($this->view->atividades as $atividade): ?>
+			<tr>
+				<td  style="vertical-align:middle;">
+					<iframe width="260" height="115" src="https://www.youtube.com/embed/<?= $atividade['video'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</td>
+				<td style="vertical-align:middle;" class="vl"><?= $atividade['titulo'] ?></td>
+				<td style="vertical-align:middle;"><?= $atividade['nome_modulo'] ?></td>
+				<td style="vertical-align:middle; cursor:pointer;"  > <i class="fa fa-pen"></i> </td>
+				<td style="vertical-align:middle;">
+					<input type="hidden" name="id_turma" value="<?= $_GET['id_turma'] ?>">
+					<input type="hidden" name="atividade[]" value="<?= $atividade['id_atividade'] ?>">
+
+					<div style="cursor:pointer;" class="custom-control custom-switch ">
+						<?php if ($atividade['num']==0): ?>
+							<input  style="cursor:pointer;" type="checkbox" name="libera[]" value="<?= $atividade['id_atividade'] ?>"  class="custom-control-input" id="customSwitches<?= $i ?>">
+							<label  style="cursor:pointer;" class="custom-control-label" for="customSwitches<?= $i ?>"></label>
+						<?php else: ?>
+							<input  style="cursor:pointer;" type="checkbox" checked name="libera[]" value="<?= $atividade['id_atividade'] ?>"  class="custom-control-input" id="customSwitches<?= $i ?>">
+							<label  style="cursor:pointer;" class="custom-control-label" for="customSwitches<?= $i ?>"></label>
+						<?php endif; ?>
+
+					</div>
+				</td>
+			</tr>
+			<?php $i++; endforeach; ?>
+	</table>
+</form>
+
+
+
+
+
+</div>

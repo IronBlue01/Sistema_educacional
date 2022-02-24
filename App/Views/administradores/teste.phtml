@@ -1,0 +1,33 @@
+<center><h1>Criador de scripts</h1></center>
+
+
+<table class="table   bg-white">
+	<tr class="bg-primary text-white">
+		<td>Nome do Arquivo</td>
+		<td>Extensão</td>
+		<td>Id_modulo</td>
+	</tr>
+
+
+	<?php foreach ($this->view->nomeArquivo as $arquivo): ?>
+
+	<?php
+	$extensao = explode('.',$arquivo['nomeArquivo']);
+	$ext = end($extensao);
+
+	if ($ext == 'pptx') {
+	?>
+
+
+	<tr class="text-left">
+		<td><?= $arquivo['nomeArquivo'] ?></td>
+		<td><?= $ext ?></td>
+		<td><?= $arquivo['id_modulo'] ?></td>
+	</tr>
+
+
+
+<?php } endforeach; ?>
+
+
+</table>

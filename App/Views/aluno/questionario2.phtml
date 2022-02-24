@@ -1,0 +1,529 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+	<h6><a class="text-info" href="/dash_aluno">Home / </a><a class="text-info" href="/windows">Exercícios</a> / Questionário windows10 </h6>
+
+	<h1 class="mt-3">2º Questionário windows10</h1>
+
+<?php if(isset($_SESSION['enviado'])){ ?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Aviso</strong> 2º  Questionario enviado com suceso
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<?php unset($_SESSION['enviado']); } ?>
+
+
+	<div class="contaiiner">
+		<div class="row col-md-12 m-0 bg-white p-4 pt-0">
+			<form class="col-md-12 p-0" action="/questionarioAlun" method="post">
+			<!--Pergunta 1-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>1) Caso você esteja sem internet e sem um pendrive, como você enviaria um arquivo para alguem que está na mesma rede que você?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="col-md-12 pr-2 ml-4">
+										<!--<input id="a1" class="form-control col-md-12"  type="text" name="p1">-->
+										<textarea name="name" class="form-control" rows="4" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 2-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>2) Qual o principal sistema operacional utilizado no mundo hoje?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a4"  type="radio" name="p2">
+								</div>
+								<div class="row col-8">
+									<label for="a4">Windows8?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a5"  type="radio" name="p2">
+								</div>
+								<div class="row col-8">
+									<label for="a5">Windows10?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a6"  type="radio" name="p2">
+								</div>
+								<div class="row col-8">
+									<label for="a6">Linux?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a7"  type="radio" name="p2">
+								</div>
+								<div class="row col-8">
+									<label for="a7">MacOX?</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+
+
+			<!--Pergunta 3-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>3) Qual o nome do programa que organiza e genrencia todos os arquivos do computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<textarea name="name" class="form-control" rows="1" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 4-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>4) Qual programa gerencia todas as configuração do computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<textarea name="name" class="form-control" rows="1" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 5-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>5) Qual tecla de atalho fecha uma aba do navegador?</strong></p>
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a15"  type="radio" name="p5">
+								</div>
+								<div class="row col-8">
+									<label for="a15">Ctrl + w</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a16"  type="radio" name="p5">
+								</div>
+								<div class="row col-8">
+									<label for="a16">Ctrl + Y</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a17"  type="radio" name="p5">
+								</div>
+								<div class="row col-8">
+									<label for="a17">Ctrl + shift + w</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a18"  type="radio" name="p5">
+								</div>
+								<div class="row col-8">
+									<label for="a18">Nehuma das alternativas acima</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+
+			<!--Pergunta 6-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>6) Qual a função do programa Sticker note?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<textarea name="name" class="form-control" rows="1" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 7-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>7) Qual a tecla de atalho para imprimir arquivos no windows?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a22"  type="radio" name="p7">
+								</div>
+								<div class="row col-8">
+									<label for="a22">Ctrl + shift + A</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a23"  type="radio" name="p7">
+								</div>
+								<div class="row col-8">
+									<label for="a23">Ctrl + P</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a24"  type="radio" name="p7">
+								</div>
+								<div class="row col-8">
+									<label for="a24">Ctrl + shift + p</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 8-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>8) Oque devemos verificar ao entrar em um site?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+									<textarea name="name" class="form-control" rows="1" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 9-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>9) Tire um print da tela de seu computador com um programa nativo de anotações escrito seu nome?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a28"  type="file" name="p9">
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 10-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>10) Qual programa utilizamos para criar lembretes no computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a32"  type="radio" name="p10">
+								</div>
+								<div class="row col-8">
+									<label for="a32">Sticker note</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 2-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a33"  type="radio" name="p10">
+								</div>
+								<div class="row col-8">
+									<label for="a33">Calculadora</label>
+								</div>
+							</div>
+							<!--Fim alternativa 2-->
+
+							<!--Alternativa 3-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a34"  type="radio" name="p10">
+								</div>
+								<div class="row col-8">
+									<label for="a34">Bloco de notas</label>
+								</div>
+							</div>
+							<!--Fim alternativa 3-->
+
+							<!--Alternativa 4-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a35"  type="radio" name="p10">
+								</div>
+								<div class="row col-8">
+									<label for="a35">WordPad</label>
+								</div>
+							</div>
+							<!--Fim alternativa 4-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 11-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>11) Qual o nome da tela inicial do computador?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a36"  type="radio" name="p11">
+								</div>
+								<div class="row col-8">
+									<label for="a36">Área de trabalho</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a37"  type="radio" name="p11">
+								</div>
+								<div class="row col-8">
+									<label for="a37">Explorador de arquivos</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a38"  type="radio" name="p11">
+								</div>
+								<div class="row col-8">
+									<label for="a38">Navegador</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 12-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>12) Caso você estivesse sem um programa de edição de textos como o word, qual programa
+					nativo do windows10 você usaria?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a39"  type="radio" name="p12">
+								</div>
+								<div class="row col-8">
+									<label for="a39">Bloco de notas</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a40"  type="radio" name="p12">
+								</div>
+								<div class="row col-8">
+									<label for="a40">Calendário</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+								<!--Alternativa 1-->
+								<div class="row col-12">
+									<div class="pr-2 ml-4">
+											<input id="a41"  type="radio" name="p12">
+									</div>
+									<div class="row col-8">
+										<label for="a41">My notes</label>
+									</div>
+								</div>
+								<!--Fim alternativa 1-->
+
+								<!--Alternativa 1-->
+								<div class="row col-12">
+									<div class="pr-2 ml-4">
+											<input id="a42"  type="radio" name="p12">
+									</div>
+									<div class="row col-8">
+										<label for="a42">Nehuma das alternativas</label>
+									</div>
+								</div>
+								<!--Fim alternativa 1-->
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 13-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>13) Qual tecla de atalho utilizamos para copiar um arquivo?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a43"  type="radio" name="p13">
+								</div>
+								<div class="row col-8">
+									<label for="a43">Ctrl + N</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a44"  type="radio" name="p13">
+								</div>
+								<div class="row col-8">
+									<label for="a44">Ctrl + C</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<input id="a45"  type="radio" name="p13">
+								</div>
+								<div class="row col-8">
+									<label for="a45">Ctrl + v</label>
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+			<!--Pergunta 13-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>14) Descreva o passo a passo de como podemos se conectar a uma impressora no windows 10?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<textarea class="form-control" rows="5" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+
+			</div>
+			<!--End Pergunta-->
+
+
+			<!--Pergunta 13-->
+			<div class="row col-md-12 mt-3">
+				<p class="mb-2"><strong>15) Liste todos os programas nativos  do windows?</strong></p>
+
+							<!--Alternativa 1-->
+							<div class="row col-12">
+								<div class="pr-2 ml-4">
+										<textarea class="form-control" rows="5" cols="80"></textarea>
+								</div>
+								<div class="row col-8">
+
+								</div>
+							</div>
+							<!--Fim alternativa 1-->
+
+			</div>
+			<!--End Pergunta-->
+
+
+						<!--Pergunta 16-->
+						<div class="row col-md-12 mt-3">
+							<p class="mb-2"><strong>16) Liste todas as teclas de atalho do windows10 que você se lembra, expecificando qual a functionlidade de cada uma.</strong></p>
+
+										<!--Alternativa 1-->
+										<div class="row col-12">
+											<div class="pr-2 ml-4">
+													<textarea class="form-control" rows="5" cols="80"></textarea>
+											</div>
+											<div class="row col-8">
+
+											</div>
+										</div>
+										<!--Fim alternativa 1-->
+
+						</div>
+						<!--End Pergunta-->
+
+
+			<div class="row col-12 bg-light p-2 m-0 justify-content-end d-flex mt-5">
+				<button type="submit" class="btn btn-success">Enviar</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

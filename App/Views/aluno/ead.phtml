@@ -1,0 +1,142 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+function valida(){
+				$('#send').attr('disabled', 'disabled');
+}
+</script>
+<h5><a href="/v_atividades?modulo=<?= $_GET['modulo'] ?>&&sub=<?= $_GET['sub'] ?>&&nomeModulo=<?= $_GET['nomeModulo'] ?>">Atividades</a> / Sistema EAD</h5>
+<hr>
+
+<?php foreach ($this->view->atividadesRealizadas as $atividadeR): ?>
+	<?php if ($atividadeR['id_atividade']==$_GET['id_atividade']): ?>
+		<a href="#" class="btn btn-success btn-icon-split">
+			<span class="icon text-white-50"><i class="fas fa-check"></i></span>
+			<span class="text">Atividade concluida</span>
+		</a>
+
+	<?php
+			 $state = 1;
+	     break;
+		 	 endif;
+			 ?>
+<?php endforeach; ?>
+
+
+
+<h2><?= $this->view->data['titulo'] ?></h2>
+
+<div class="container-fluid p-0 mb-5">
+
+<!--===============================Layer do video============================================-->
+
+	<div class="embed-responsive embed-responsive-16by9 mb-3">
+  				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $this->view->data['video'] ?>" allowfullscreen></iframe>
+	</div>
+
+<!--==============================End da layer do video=======================================-->
+
+<?php if ($this->view->data['description']!=''): ?>
+<div class="col-md-12 mb-0">
+	<h5 class="font-weight-bolder mb-0">Descrição</h5>
+	<p><?= $this->view->data['description'] ?></p>
+</div>
+<?php endif; ?>
+<div class="col-md-12   p-4 mt-0 mb-2">
+<h5 class="font-weight-bolder mb-0">Arquivos disponibilizados para download</h5>
+	<?php
+		if($this->view->data['arquivo']!=''){
+	?>
+
+
+	 <p style="cursor:pointer;" onclick="window.location='assets/dashboard/atividades/arquivo/<?= $this->view->data['arquivo'] ?>'" class="mb-1 mt-0  col-3">
+		<i class="fas text-warning fa-folder fa-2x mt-3 mr-2"></i><?= $this->view->data['arquivo'] ?>
+		<i class="fas text-success fa-download  mt-3 mr-2"></i>
+	 </p>
+
+
+ 	<?php } ?>
+		<div class="row col-12 p-0 ">
+
+	<?php foreach ($this->view->arquivos as $arquivo): ?>
+
+
+			<div class="card mt-3 ml-2" style="width: 17rem;">
+				<div class="card-body pt-0 ">
+					<h5 class="card-title text-center"><i class="fas text-warning fa-folder fa-3x mt-3 mr-2"></i></h5>
+					<p class="card-text text-center"><?=  mb_substr($arquivo['arquivo'], 0, 22,'UTF-8').'...' ?> </p>
+					<div class="row  justify-content-center">
+					<a href="assets/dashboard/atividades/arquivo/<?= $arquivo['arquivo'] ?>" download  class="btn btn-success "><i class="fas text-white fa-download fa-2x "></i></a>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+	<?php endforeach; ?>
+		</div>
+	<p style="cursor:pointer;" onclick="window.location='assets/dashboard/atividades/arquivo/<?= $arquivo['arquivo'] ?>'" class="mb-1 mt-0 d-none col-3">
+	 <i class="fas text-warning fa-folder fa-2x mt-3 mr-2"></i><?= $arquivo['arquivo'] ?>
+	 <i class="fas text-success fa-download  mt-3 mr-2"></i>
+	</p>
+
+
+
+
+
+		<?php if (!$this->view->data['img_view']==''): ?>
+	 	<h5 class="font-weight-bolder mb-0 mt-5">Imagens para visualização</h5>
+		<div class="col-md-12 p-1 bg-secondary">
+				<img data-toggle="modal" data-target="#window" class="mr-2 mb-2 mt-2" style="cursor:pointer;" width="50px" height="50px" src="assets/dashboard/atividades/view/<?= $this->view->data['img_view']  ?>">
+		</div>
+<?php endif; ?>
+</div>
+
+<?php if (!isset($state)): ?>
+	<div class="col-md-12 bg-primary p-2 d-flex justify-content-end">
+		<p class="text-white mt-3 mr-2">Data de entrega: </p>
+	<button data-toggle="modal" data-target="#entrega" class="btn btn-lg btn-warning">  Entregar trabalho <i class="fas fa-hand-holding"></i></button>
+	</div>
+<?php endif; ?>
+
+
+<div id="window" class="modal fade bd-example-modal-xl " tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="row col-md-12 p-2 m-0 bg-dark">
+				<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 100rem;" src="assets/dashboard/atividades/view/<?= $this->view->data['img_view'] ?>">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--================================================MODAL DE ENTREGA DE TRABALHOS============================================-->
+
+
+<div id="entrega" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="row col-md-12 p-3 bg-white m-0  rounded">
+				<h6>Entregar trabalho - <?= $this->view->data['titulo'] ?></h6>
+
+				<div class="row col-md-12 m-0 bg-white p-2">
+					<form onsubmit="valida()" class="col-md-12" action="/entrega" method="post" enctype="multipart/form-data" onsubmit="return valida(this)">
+						<input class="form-control mb-3" type="file" required name="arquivo">
+						<input type="hidden" name="nomeTrabalho" value="<?= $this->view->data['titulo'] ?>">
+						<div class="row col-md-12 bg-white p-2 justify-content-end m-0 ml-2">
+						<input type="hidden" name="id_modulo" value="<?= $_GET['modulo'] ?>">
+						<input type="hidden" name="id_atividade" value="<?= $this->view->data['id_atividade'] ?>">
+						<button type="submit" id="send" class="btn btn-success ml-2" name="button"><i class="fas fa-hand-holding m-0"></i> Entregar </button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--================================================FIM MODAL DE ENTREGA DE TRABALHOS============================================-->
+
+</div>

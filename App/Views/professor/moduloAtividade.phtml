@@ -1,0 +1,24 @@
+<h6>
+	 <a href="/P_turma?id_turma=<?= $_GET['id_turma'] ?>">Voltar</a>
+ </h6>
+<div class="container-fluid  p-4 ">
+<div class="row col-md-12">
+	<h4>Trabalhos entregues turma <?= $this->view->infoTurma['nomeTurma'] ?> - <?= $this->view->infoTurma['dia'] ?></h4>
+</div>
+<hr>
+<div class="row col-md-12 p-0">
+
+<?php $i=1; foreach ($this->view->modulos as $modulo): ?>
+<!--/P_trab_ent?id_turma=&&id_modulo=<?= $modulo['id_modulo'] ?>&&id_curso=&&subcategoria=<?= $modulo['subcategoria'] ?>-->
+
+<div   onclick="window.location='/AtividadesModulo?id_modulo=<?= $modulo['id_modulo'] ?>&&id_turma=<?= $_GET['id_turma'] ?>&&id_curso=<?= $modulo['curso'] ?>&&subcategoria=<?= $_GET['subcategoria'] ?>'"  class="card mr-3 cursor mb-3" style="width: 17rem;">
+	<img height="50%;" class="card-img-top" src="assets/dashboard/modulos/<?= $modulo['img'] ?>" alt="Card image cap">
+	<div class="card-body   p-0 justify-content-center d-flex">
+		<h5 class="mt-4" class="card-title"><a href="#"> <?= $modulo['nome_modulo']  ?> </a></h5>
+	</div>
+</div>
+
+
+<?php endforeach; ?>
+</div>
+</div>

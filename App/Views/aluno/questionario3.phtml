@@ -1,0 +1,61 @@
+	<h6><a class="text-info" href="/dash_aluno">Home / </a><a class="text-info" href="/windows">Exercícios</a> / Exercícios de fixação </h6>
+
+
+	<?php if(isset($_SESSION['enviado'])){ ?>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+	  <strong>Aviso</strong> Fixando o conhecimeto enviado com suceso
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	<?php unset($_SESSION['enviado']); } ?>
+
+
+	<div class="container bg-white p-3 m-0">
+		<form class="col-md-12" action="/questionarioAlun2" method="post">
+
+		<p>1) Imagine que você precise criar um lembrete em seu computador e para isto irá usar um programa nativo do windows-10, abra este programa digite seu lembrete e depois tire um print da tela e envie-o pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+		<p class="mt-4">2) Imagine que você está em seu trabalho e lhe aparece a necessidade de converter $100 dólares em real, abra um programa nativo do windows faça está conversão e envie um print pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+		<p class="mt-4">3) Imagine que você precise editar um texto simples mas seu computador é novo e ainda não há o programa word instalado tendo em vista isto abra um programa nativo do windows para edição de texto digite seu nome e envie o print pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+		<p class="mt-4">4) Imagine que você está em seu trabalho e lhe aparece a necessidade de fazer uma anotação rápida porém você está sem nenhum papel por perto apenas o computador está aberto em sua frente, tendo em vista está situação abra um programa nativo do windows para fazer uma anotação e envie um print da anotação no campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+		<p class="mt-4">5) Imagine que a empresa em que você trabalha acabou de comprar uma impressora nova e a deixou em sua sala, tendo em vista está situção agora você precisa instala-la vá até as configurações do windows onde você poderia fazer a conecção com a impressora e envie um print da tela quando chegar neste ponto.</p>
+		<input type="file">
+		<hr>
+
+		<p class="mt-4">6) Tire um print do seu explorador de arquivos e envie pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+
+		<p class="mt-4">7) Dentro da pasta imagens do seu explorador de arquivos crie uma pasta com seu nome depois vá na internet pesquise uma imagem de céu salve está imagem dentro da pasta em que você criou, após ter feito este processo abra a pasta onde você salvou a imagem coloque os icones como grandes tire um print da tela e envie pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+		<p class="mt-4">8) Vá até a configuração onde você poderia desinstalar um programa e envie um print pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+
+		<p class="mt-4">9) Imaginando que o navegador de internet google chrome não estivesse querendo fechar abra o programa nativo do windows que forçaria o fechamento dele e  envie um print pelo campo abaixo.</p>
+		<input type="file">
+		<hr>
+
+
+		<div class="row col-12 bg-primary justify-content-end p-3">
+			<button type="submit" class="btn btn-success" name="button">Enviar</button>
+		</div>
+
+		</form>
+	</div>

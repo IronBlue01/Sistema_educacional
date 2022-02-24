@@ -1,0 +1,134 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+<style media="screen">
+	*{
+		font-family: 'Montserrat', sans-serif;
+	}
+	img{
+		border-radius: 50%;
+	}
+	#bar-top{
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+</style>
+<h6 class="text-white"><a class="text-info" href="/dash_professor">HOME / </a><a class="text-info" href="/dia?D=<?= $this->view->infoTurma['dia'] ?>">Turmas cadastradas /</a> <?= $this->view->infoTurma['nomeTurma'] ?> -
+	<?= 	$this->view->infoTurma['dia'] ?></h6>
+<hr>
+<div class="container-fluid p-3">
+
+		<div id="bar-top" class="row col-md-12 bg-primary p-3 m-0 justify-content-end">
+			<!--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#InsertModal" name="button"> <i class="fa fa-plus"></i> Novo aluno</button>-->
+
+			<div class="col-md-6">
+				 <h3 class="text-white text-left m-2"><?= $this->view->infoTurma['nomeTurma']?> - <?= 	$this->view->infoTurma['dia'] ?></h3>
+			</div>
+
+
+			<div class="col-md-6 d-flex justify-content-end">
+
+			<button onclick="window.location='/modulo_atividades?id_turma=<?= $_GET['id_turma'] ?>&&id_curso=<?= $this->view->infoTurma['curso'] ?>&&subcategoria=<?= $this->view->catProfessor ?>'"  class="text-white btn btn-warning"> Trabalhos recebidos</button>
+			<button onclick="window.location='/atividades?id_turma=<?= $_GET['id_turma'] ?>&&name=<?= $this->view->infoTurma['nomeTurma'] ?>&&id_curso=<?= $this->view->infoTurma['curso']  ?>'" class="btn btn-success ml-2" type="button" name="button">+ Atividades</button>
+
+
+			</div>
+
+		</div>
+
+		<div class="row col-md-12 bg-white p-2 m-0 rounded">
+			<hr>
+			<?php if($this->view->alunos != NULL): ?>
+			<table class="table">
+				<tr class="text-center">
+					<!--<td><strong>ID aluno</strong></td>-->
+					<td><strong>Nº</strong></td>
+					<td><strong>Img</strong></td>
+					<td class="text-left"><strong>Nome</strong></td>
+					<td class="text-left"><strong>Username</strong></td>
+					<td><strong>Senha</strong></td>
+					<td><strong>Editar</strong></td>
+					<td><strong>Remover</strong></td>
+				</tr>
+
+				<?php
+				     $i=1;
+						 foreach ($this->view->alunos as $aluno):
+				?>
+
+				<tr class="text-center">
+					<!--<td style="vertical-align:middle;"></td>-->
+					<td style="vertical-align:middle;"><?= $i ?></td>
+					<td><img src="assets/dashboard/img/avatar/avatar.jpg" width="50px" height="50px"></td>
+					<td style="vertical-align:middle; text-align:left;"><?= $aluno['nome'] ?></td>
+					<td class="text-left" style="vertical-align:middle;"><?= $aluno['username'] ?></td>
+					<td style="vertical-align:middle;" title="<?= $aluno['senha'] ?>">***********</td>
+					<td style="vertical-align:middle;"> <i style="cursor:pointer;"   class="fa fa-pencil-alt fa-lg"></i>  </td>
+					<td style="vertical-align:middle;"> <i style="cursor:pointer;" data-toggle="modal" data-target="#excluirModal<?= $i ?>" class="fa fa-trash fa-lg"></i>  </td>
+				</tr>
+
+				<div class="modal fade" id="excluirModal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header bg-danger text-white">
+								<h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir este aluno(@)?</h5>
+								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">Selecione a opção excluir caso queira realmente excluir o anluno(@).</div>
+							<div class="modal-footer">
+								<button class="btn btn-success" type="button" data-dismiss="modal" >Cancelar</button>
+								<a class="btn btn-danger" href="/deleteAlunP?id=<?= $aluno['id_aluno'].'&turma='.$aluno['turma'] ?>">Excluir</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				 <?php $i++; endforeach;?>
+			</table>
+
+		<?php else: ?>
+
+							<div class="row col-12 justify-content-center d-flex mt-2">
+							<h5>AINDA NÃO HÁ ALUNOS CADASTRADOS PARA ESTÁ TURMA</h5>
+							</div>
+
+		<?php endif; ?>
+		</div>
+</div>
+
+<div class="modal fade" id="InsertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-success text-white">
+				<h5 class="modal-title" id="exampleModalLabel"> Inserir um novo aluno para a turma <?= $this->view->infoTurma['nomeTurma'] ?></h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+
+
+			<div class="row col-12 p-3 m-0 ">
+				<form class="col-12" action="/insereAluno" method="post">
+					<label><strong>Nome do aluno</strong></label>
+					<input class="form-control" type="text" name="nome">
+
+					<label class="mb-0 mt-3"><strong>Username</strong></label>
+					<input class="form-control" type="text" name="username">
+
+					<label class="mb-0 mt-3"><strong>Senha</strong></label>
+					<input class="form-control" type="text" name="senha">
+					<input type="hidden" name="turma" value="<?= $this->view->infoTurma['id_turma'] ?>">
+					<input type="hidden" name="goBack" value="turmaAlun">
+					<input type="hidden" name="parameter">
+			</div>
+
+
+			<div class="modal-footer bg-primary">
+				<button class="btn btn-danger" type="button" data-dismiss="modal" >Cancelar</button>
+				<button class="btn btn-success" type="submit"><a>Inserir</a></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

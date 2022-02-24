@@ -1,0 +1,80 @@
+
+ # Adicionado pelo Painel de Controle
+ php_flag undefined undefined
+ 
+ RewriteEngine On
+
+ /*Rotas do login*/
+ RewriteRule ^login\/?$ index.php/login[L]
+ RewriteRule ^validate\/?$ index.php/validate[L]
+
+
+ 
+ /*Rotas dos administradores*/
+ RewriteRule ^home\/?$ index.php/home[L]
+ RewriteRule ^logout\/?$ index.php/logout[L]
+ RewriteRule ^curso\/?$ index.php/curso[L]
+ RewriteRule ^insereCurso\/?$ index.php/insereCurso[L]
+ RewriteRule ^professor\/?$ index.php/professor[L]
+ RewriteRule ^insereProfessor\/?$ index.php/insereProfessor[L]
+ RewriteRule ^turmas\/?$ index.php/turmas[L]
+ RewriteRule ^insereTurma\/?$ index.php/insereTurma[L]
+ RewriteRule ^alunos\/?$ index.php/alunos[L]
+ RewriteRule ^insereAluno\/?$ index.php/insereAluno[L]
+ RewriteRule ^turma\/?$ index.php/turma[L]
+ RewriteRule ^turmaAlun\/?$ index.php/turmaAlun[L]
+ RewriteRule ^modulos\/?$ index.php/modulos[L]
+ RewriteRule ^insereModulo\/?$ index.php/insereModulo[L]
+ RewriteRule ^teste\/?$ index.php/teste[L]
+ RewriteRule ^edit_alun\/?$ index.php/edit_alun[L]
+ RewriteRule ^insereRelacaoProfessorTurma\/?$ index.php/insereRelacaoProfessorTurma[L]
+ 
+ 
+ 
+ /*Rotas de alunos*/
+ RewriteRule ^dash_aluno\/?$ index.php/dash_aluno[L]
+ RewriteRule ^questionario\/?$ index.php/questionario[L]
+ RewriteRule ^questionarioAlun\/?$ index.php/questionarioAlun[L]
+ RewriteRule ^questionarioAlun2\/?$ index.php/questionarioAlun2[L]
+ RewriteRule ^deleteAlun\/?$ index.php/deleteAlun[L]
+ RewriteRule ^excel\/?$ index.php/excel[L]
+ RewriteRule ^word\/?$ index.php/word[L]
+ RewriteRule ^entrega\/?$ index.php/entrega[L]
+ RewriteRule ^trab_entregue\/?$ index.php/trab_entregue[L]
+ RewriteRule ^windows\/?$ index.php/windows[L]
+ RewriteRule ^exc1\/?$ index.php/exc1[L]
+ RewriteRule ^questionario2\/?$ index.php/questionario2[L]
+ RewriteRule ^questionario3\/?$ index.php/questionario3[L]
+ RewriteRule ^questionario4\/?$ index.php/questionario4[L]
+ RewriteRule ^perfil_aluno\/?$ index.php/perfil_aluno[L]
+ RewriteRule ^UpPerfil\/?$ index.php/UpPerfil[L]
+ RewriteRule ^photoshop\/?$ index.php/photoshop[L]
+ RewriteRule ^removeTrabAlun\/?$ index.php/removeTrabAlun[L]
+ RewriteRule ^page_entregar\/?$ index.php/page_entregar[L]
+ RewriteRule ^v_atividades\/?$ index.php/v_atividades[L]
+ RewriteRule ^ent_trab\/?$ index.php/ent_trab[L]
+ RewriteRule ^ver_entrega\/?$ index.php/ver_entrega[L]
+ RewriteRule ^home_adm\/?$ index.php/home_adm[L]
+ RewriteRule ^ead\/?$ index.php/ead[L]
+ 
+ 
+ /*Rotas de professores*/
+ RewriteRule ^dash_professor\/?$ index.php/dash_professor[L]
+ RewriteRule ^dia\/?$ index.php/dia[L]
+ RewriteRule ^P_turma\/?$ index.php/P_turma[L]
+ RewriteRule ^P_trab_ent\/?$ index.php/P_trab_ent[L]
+ RewriteRule ^corrigir\/?$ index.php/corrigir[L]
+ RewriteRule ^removerTrab\/?$ index.php/removerTrab[L]
+ RewriteRule ^atividades\/?$ index.php/atividades[L]
+ RewriteRule ^cad_atividade\/?$ index.php/cad_atividade[L]
+ RewriteRule ^pageCad_atividade\/?$ index.php/pageCad_atividade[L]
+ RewriteRule ^liberar_atividade\/?$ index.php/liberar_atividade[L]
+ RewriteRule ^cadastroDeatividades\/?$ index.php/cadastroDeatividades[L]
+ RewriteRule ^modulo_atividades\/?$ index.php/modulo_atividades[L]
+ RewriteRule ^AtividadesModulo\/?$ index.php/AtividadesModulo[L]
+ RewriteRule ^envia_ftp\/?$ index.php/envia_ftp[L]
+ RewriteRule ^prof_teste\/?$ index.php/prof_teste[L]
+ RewriteRule ^deleteAlunP\/?$ index.php/deleteAlunP[L]
+
+
+

@@ -1,0 +1,80 @@
+<h6 class="ml-3"><a class="text-info" href="/home">HOME</a>/CADASTRAR UM NOVO CURSO</h6>
+
+
+<div class="container pb-5">
+	<div class="row col-md-12 bg-white p-5 rounded">
+		<form class="col-12"  action="/insereCurso" method="post" enctype="multipart/form-data">
+		<!--	<div class="row col-md-9 mb-3">
+				<label class="mb-0" for="curso">Img do curso</label>
+				<input id="curso" type="file" class="form-control " name="img">
+			</div>
+-->
+			<div class="row col-md-9">
+				<label class="mb-0" for="curso">Nome do curso</label>
+				<input id="curso" type="text" class="form-control " name="curso">
+			</div>
+			<div class="row col-md-2 mt-2">
+				<label class="mb-0" for="sigla">Sigla do curso</label>
+				<input id="sigla" type="text" class="form-control " name="sigla">
+			</div>
+			<!--
+			<div class="row col-md-12 p-2 mt-3">
+					<label for="imagem">imagem de capa para o curso</label>
+					<input id="imagem" type="file" class="form-control" name="img">
+			</div>
+		-->
+			<div class="row col-md-12  justify-content-end mt-3">
+				<button type="submit" class="btn btn-success">Cadastrar</button>
+			</div>
+		</form>
+	</div>
+
+<!--
+	<div class="row col-12 bg-white p-3 justify-content-center d-flex">
+		<h5>Cursos cadastrados</h5>
+	</div>
+
+<div class="row col-12 bg-white p-3 pb-5">
+			<div class="card" style="width: 18rem;">
+			<img src="https://source.unsplash.com/random/280x180" class="card-img-top" alt="...">
+			  <div class="card-body">
+			    <h5 class="card-title">Informática apicada</h5>
+			    <p class="card-text mb-0">Turmas:&nbsp;&nbsp; 0</p>
+					<p class="card-text">Módulos: 0</p>
+			    <a href="#" class="btn btn-primary">Configurações da turma</a>
+			  </div>
+			</div>
+</div>
+-->
+
+
+<div class="container">
+	<div class="row">
+			<table class="table">
+				<tr>
+					<td>Sigla</td>
+					<td>Curso</td>
+					<td class="text-center">Editar</td>
+					<td class="text-center">Excluir</td>
+				</tr>
+				<?php foreach ($this->view->cursos as $curso): ?>
+				<tr>
+					<td class="font-weight-bolder ">
+						<?= $curso['sigla'] ?>
+					</td>
+					<td>
+						<a href="<?= $curso['id_curso'] ?>"><?= $curso['nomeCurso'] ?></a>
+					</td>
+					<td class="text-center">
+						<i class="fas fa-pen"></i>
+					</td>
+					<td  class="text-center">
+						<i class="fas fa-trash"></i>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+	</div>
+</div>
+
+</div>

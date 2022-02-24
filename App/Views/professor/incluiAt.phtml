@@ -1,0 +1,144 @@
+<style media="screen">
+	input[type=checkbox] + label{
+		display: block;
+		margin:0.2em;
+		cursor: pointer;
+		padding: 0.3em;
+	}
+
+	input[type=checkbox]{
+		display:none;
+	}
+
+	input[type=checkbox] + label:before{
+		content:"\2714";
+		border: 0.1em solid #000;
+		border-radius: 0.2em;
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		padding-left: 0.2em;
+		padding-bottom: 0.3em;
+		margin-right: 0.2em;
+		vertical-align: bottom;
+		color:transparent;
+	}
+input[type=checkbox]:checked + label:before{
+	background-color: MediumSeaGreen;
+	border-color: MediumSeaGreen;
+	color: #fff;
+	transition:.2s;
+}
+input[type=checkbox]+ label:active:before{
+	transform:scale(0);
+}
+#barTop{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+</style>
+<h6>
+	<a class="text-info" href="/P_turma?id_turma=<?= $_GET['id_turma'] ?>">Turma cadastrada</a>
+	/ Cadastrar atividade para <?= $_GET['name'] ?>
+</h6>
+<hr>
+<h6></h6>
+<br>
+<div class="container-fiud">
+	<div class="row bg-white p-4">
+		<div class="col-12 p-0 m-0 justify-content-end d-flex">
+
+		<button onclick="window.location.href='/liberar_atividade?id_turma=<?= $_GET['id_turma'] ?>&&name=<?= $_GET['name'] ?>&&id_curso=<?= $_GET['id_curso'] ?>'" class="btn btn-info mb-3" type="button" name="button"><i class="fa fa-cloud"></i> Liberar atividades</button>
+		</div>
+
+			<div id="barTop" class="container-fluid p-2 bg-primary justify-content-end d-flex mb-3">
+
+				<div class="col-md-6 ">
+						<h4 class="mt-2 text-white">Atividades liberadas para <?= $_GET['name'] ?></h4>
+				</div>
+
+				<div class="col-md-6 justify-content-end d-flex">
+					<button onclick="window.location='/pageCad_atividade?id_turma=<?= $_GET['id_turma'] ?>&&name=<?= $_GET['name'] ?>&&id_curso=<?= $_GET['id_curso'] ?>'"  type="button" class="btn btn-success mr-2"><i class="fa fa-plus"></i>
+							Atividade
+						</button>
+
+				</div>
+
+
+			</div>
+
+
+
+
+			<table class="table text-center ">
+					<tr class="font-weight-bolder">
+						<td>Video</td>
+						<td>Atividade</td>
+						<td>Módulo</td>
+						<!--<td>Data de entrega</td>-->
+					</tr>
+					<?php foreach ($this->view->atividadesLiberadas as $atividadeLiberada): ?>
+					<tr>
+						<td  style="vertical-align:middle;">
+							<iframe width="260" height="115" src="https://www.youtube.com/embed/<?= $atividadeLiberada['video'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</td>
+						<td style="vertical-align:middle;" class="vl"><a href="#"><?= $atividadeLiberada['titulo'] ?></a></td>
+						<td style="vertical-align:middle;"><?= $atividadeLiberada['nome_modulo'] ?></td>
+
+						<td class="d-none" style="vertical-align:middle;">
+							<input id="chec2" type="checkbox" name="" value="">
+							<label for="chec2"></label>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+			</table>
+
+			<form class="col-12 d-none" action="/cad_atividade" method="post" enctype="multipart/form-data">
+
+				<input type="hidden" name="id_curso" value="<?= $_GET['id_curso'] ?>">
+
+				<label for="titulo" class="mb-0"> <strong>Modulo</strong> </label>
+				<select class="form-control col-md-5 mb-3" name="modulo">
+					<?php foreach ($this->view->modulos as $modulo): ?>
+						<?php if ($this->view->id_curso['subcategoria']==$modulo['subcategoria']): ?>
+							<option value="<?= $modulo['id_modulo'] ?>"><?= $modulo['nome_modulo'] ?></option>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</select>
+
+				<input type="hidden" name="subcategoria" value="<?= $this->view->id_curso['subcategoria'] ?>">
+
+
+				<input type="hidden" name="id_turma" value="<?= $_GET['id_turma'] ?>">
+				<input type="hidden" name="nome_turma" value="<?= $_GET['name'] ?>">
+				<input type="hidden" name="id_curso" value="<?= $_GET['id_curso'] ?>">
+
+					<label for="titulo" class="mb-0"> <strong>Titulo</strong> </label>
+					<input id="titulo" type="text" name="titulo" class="form-control col-md-5 mb-2" placeholder="De um titulo para a atividade">
+
+					<label for="img" class="mb-0"><strong>Imagem de capa</strong></label>
+					<input id="img" type="file" class="form-control col-md-5 mb-3" name="img">
+
+					<label for="description" class="mb-0"><strong>Descrição</strong></label>
+					<textarea class="form-control col-md-5" name="descricao" rows="3" ></textarea>
+					<!--<input id="description" type="text" class="form-control col-5 mb-3" name="descricao" >-->
+
+					<label for="arquivo" class="mb-0 mt-3"><strong>Disponibilizar imagem para vizualização</strong></label>
+					<input id="arquivo" type="file" class="form-control col-md-5 mb-3" name="img_view" >
+
+					<label for="arquivo" class="mb-0 mt-2"><strong>Disponibilizar arquivo para download</strong></label>
+					<input id="arquivo" type="file" class="form-control col-md-5" name="arquivo" >
+
+					<label for="video" class="mb-0 mt-3"><strong>Disponibilizar uma videoaula sobre o assunto</strong></label>
+					<input id="video" type="text" class="form-control col-md-5" name="video" >
+
+					<label for="data" class="mb-0 mt-3"><strong>Data de entrega</strong></label>
+					<input id="data" type="date" class="form-control col-md-5" name="data">
+
+					<div class="col-12 p-4 bg-primary mt-3 justify-content-end d-flex">
+							<button type="submit" class="btn btn-success">Cadastrar</button>
+					</div>
+
+			</form>
+	</div>
+</div>
